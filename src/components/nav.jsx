@@ -4,15 +4,19 @@ import { Link } from 'react-router';
 export default class Nav extends Component {
   constructor(props) {
     super(props);
-    this.textColor = props.textColor;
+    this.props = props
   }
   render() {
     return (
-        <nav className="navbar navbar-inverse navbar-fixed-top">
+        <nav className="navbar navbar-inverse">
           <div className="container-fluid">
             <div className="navbar-collapse collapse" id="footer">
               <ul className="nav navbar-nav">
-                <li><a href='/'><div style={{color: this.textColor }}><i className="fa fa-home" aria-hidden="true"></i> home</div></a></li>
+                <Link to='/'><button className='btn btn-warning'>Home</button></Link>
+              </ul>
+              <ul className="nav navbar-right">
+                <button onClick={this.props.addPiano} className='btn btn-success'>Add Piano</button>
+                <button onClick={this.props.removePiano} className='btn btn-danger'>Remove Piano</button>
               </ul>
             </div>
           </div>

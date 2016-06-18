@@ -26901,7 +26901,7 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Nav).call(this, props));
 
-	    _this.textColor = props.textColor;
+	    _this.props = props;
 	    return _this;
 	  }
 
@@ -26910,7 +26910,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'nav',
-	        { className: 'navbar navbar-inverse navbar-fixed-top' },
+	        { className: 'navbar navbar-inverse' },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'container-fluid' },
@@ -26921,18 +26921,27 @@
 	              'ul',
 	              { className: 'nav navbar-nav' },
 	              _react2.default.createElement(
-	                'li',
-	                null,
+	                _reactRouter.Link,
+	                { to: '/' },
 	                _react2.default.createElement(
-	                  'a',
-	                  { href: '/' },
-	                  _react2.default.createElement(
-	                    'div',
-	                    { style: { color: this.textColor } },
-	                    _react2.default.createElement('i', { className: 'fa fa-home', 'aria-hidden': 'true' }),
-	                    ' home'
-	                  )
+	                  'button',
+	                  { className: 'btn btn-warning' },
+	                  'Home'
 	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'ul',
+	              { className: 'nav navbar-right' },
+	              _react2.default.createElement(
+	                'button',
+	                { onClick: this.props.addPiano, className: 'btn btn-success' },
+	                'Add Piano'
+	              ),
+	              _react2.default.createElement(
+	                'button',
+	                { onClick: this.props.removePiano, className: 'btn btn-danger' },
+	                'Remove Piano'
 	              )
 	            )
 	          )
@@ -27012,16 +27021,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: this.addPiano.bind(this) },
-	          'Add Piano'
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: this.removePiano.bind(this) },
-	          'Remove Piano'
-	        ),
+	        _react2.default.createElement(_nav2.default, { addPiano: this.addPiano.bind(this), removePiano: this.removePiano.bind(this) }),
 	        _react2.default.createElement(_piano2.default, null),
 	        _react2.default.createElement(
 	          'div',

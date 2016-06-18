@@ -63,3 +63,9 @@
 .content {
 	bottom: 0px;
 }
+
+.navbar {
+    background-color: transparent;
+    background: transparent;
+    border-width: 0px;
+}

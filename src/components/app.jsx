@@ -24,8 +24,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.addPiano.bind(this)}>Add Piano</button>
-        <button onClick={this.removePiano.bind(this)}>Remove Piano</button>
+        <Nav addPiano={this.addPiano.bind(this)} removePiano={this.removePiano.bind(this)}/>
         <Piano />
         <div style={{display: 'inline'}}>{this.state.pianos}</div>
       </div>
