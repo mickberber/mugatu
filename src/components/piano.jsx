@@ -5,12 +5,19 @@ export default class Piano extends Component {
     constructor(props){
         super(props);
         this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+        this.state = {
+            sequence: []
+        }
     }
-    colorChange() {
-        console.log('clicked');
+
+    colorChange(val) {
+        console.log(this.state.sequence);
+        this.state.sequence.push(val);
+        this.setState({sequence: this.state.sequence});
     }
+
     render() {
-        let whiteKeys = this.keys.map((letter, i) => { return <WhiteKey letter={letter} key={i}/> })
+        let whiteKeys = this.keys.map((letter, i) => { return <WhiteKey colorChange={this.colorChange.bind(this)} letter={letter} key={i}/> })
         return (
             <div className="piano">
                 <div className="white">

@@ -27147,19 +27147,26 @@
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Piano).call(this, props));
 
 	        _this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+	        _this.state = {
+	            sequence: []
+	        };
 	        return _this;
 	    }
 
 	    _createClass(Piano, [{
 	        key: 'colorChange',
-	        value: function colorChange() {
-	            console.log('clicked');
+	        value: function colorChange(val) {
+	            console.log(this.state.sequence);
+	            this.state.sequence.push(val);
+	            this.setState({ sequence: this.state.sequence });
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+
 	            var whiteKeys = this.keys.map(function (letter, i) {
-	                return _react2.default.createElement(_whiteKey2.default, { letter: letter, key: i });
+	                return _react2.default.createElement(_whiteKey2.default, { colorChange: _this2.colorChange.bind(_this2), letter: letter, key: i });
 	            });
 	            return _react2.default.createElement(
 	                'div',
@@ -27231,13 +27238,17 @@
 	    }
 
 	    _createClass(WhiteKey, [{
+	        key: 'handleClick',
+	        value: function handleClick() {
+	            this.props.colorChange(this.props.letter);
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var letter = this.props.letter;
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'keyboard', style: { bottom: '0px' } },
-	                letter
+	                { onClick: this.handleClick.bind(this), className: 'keyboard', style: { bottom: '0px' } },
+	                this.props.letter
 	            );
 	        }
 	    }]);

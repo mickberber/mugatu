@@ -6,10 +6,13 @@ export default class WhiteKey extends Component {
         this.props = props;
     }
 
+    handleClick() {
+        this.props.colorChange(this.props.letter);
+    }
+    
     render() {
-        let letter = this.props.letter;
         return (
-            <div className="keyboard" style={{bottom: '0px'}}>{letter}</div>
+            <div onClick={this.handleClick.bind(this)} className="keyboard" style={{bottom: '0px'}}>{this.props.letter}</div>
         )
     }
 }
