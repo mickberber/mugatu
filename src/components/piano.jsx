@@ -19,21 +19,29 @@ export default class Piano extends Component {
     render() {
         let whiteKeys = this.keys.map((letter, i) => { return <WhiteKey colorChange={this.colorChange.bind(this)} letter={letter} key={i}/> })
         return (
-            <div className="piano">
-                <div className="white">
-                    {whiteKeys}
+            <div>
+                <div className="piano">
+                    <div className="white">
+                        {whiteKeys}
+                    </div>
+                    <div className="black">
+                        <div className="keyboard"></div>
+                        <div className="keyboard"></div>
+                        <div className="keyboard" style={{visibility:"hidden"}}></div>
+                        <div className="keyboard"></div>
+                        <div className="keyboard"></div>
+                        <div className="keyboard"></div>
+                    </div>
+                    <div>
+                        <img src='./../assets/mugatu-o.gif' style={{height: '400px', width: '500px', float: 'right'}}/>
+                        <img src='./../assets/pknecktie.png' style={{height: '400px', width: '250px', float: 'right'}}/>
+                    </div>
+                    <br />
                 </div>
-                <div className="black">
-                    <div className="keyboard"></div>
-                    <div className="keyboard"></div>
-                    <div className="keyboard" style={{visibility:"hidden"}}></div>
-                    <div className="keyboard"></div>
-                    <div className="keyboard"></div>
-                    <div className="keyboard"></div>
-                </div>
+                <div>{this.state.sequence}</div>
                 <div>
-                    <img src='./../assets/mugatu-o.gif' style={{height: '400px', width: '500px', float: 'right'}}/>
-                    <img src='./../assets/pknecktie.png' style={{height: '400px', width: '250px', float: 'right'}}/>
+                    <form>
+                    </form>
                 </div>
             </div>
         )

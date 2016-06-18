@@ -27170,27 +27170,42 @@
 	            });
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'piano' },
+	                null,
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'white' },
-	                    whiteKeys
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'black' },
-	                    _react2.default.createElement('div', { className: 'keyboard' }),
-	                    _react2.default.createElement('div', { className: 'keyboard' }),
-	                    _react2.default.createElement('div', { className: 'keyboard', style: { visibility: "hidden" } }),
-	                    _react2.default.createElement('div', { className: 'keyboard' }),
-	                    _react2.default.createElement('div', { className: 'keyboard' }),
-	                    _react2.default.createElement('div', { className: 'keyboard' })
+	                    { className: 'piano' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'white' },
+	                        whiteKeys
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'black' },
+	                        _react2.default.createElement('div', { className: 'keyboard' }),
+	                        _react2.default.createElement('div', { className: 'keyboard' }),
+	                        _react2.default.createElement('div', { className: 'keyboard', style: { visibility: "hidden" } }),
+	                        _react2.default.createElement('div', { className: 'keyboard' }),
+	                        _react2.default.createElement('div', { className: 'keyboard' }),
+	                        _react2.default.createElement('div', { className: 'keyboard' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement('img', { src: './../assets/mugatu-o.gif', style: { height: '400px', width: '500px', float: 'right' } }),
+	                        _react2.default.createElement('img', { src: './../assets/pknecktie.png', style: { height: '400px', width: '250px', float: 'right' } })
+	                    ),
+	                    _react2.default.createElement('br', null)
 	                ),
 	                _react2.default.createElement(
 	                    'div',
 	                    null,
-	                    _react2.default.createElement('img', { src: './../assets/mugatu-o.gif', style: { height: '400px', width: '500px', float: 'right' } }),
-	                    _react2.default.createElement('img', { src: './../assets/pknecktie.png', style: { height: '400px', width: '250px', float: 'right' } })
+	                    this.state.sequence
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    _react2.default.createElement('form', null)
 	                )
 	            );
 	        }
@@ -27234,12 +27249,14 @@
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(WhiteKey).call(this, props));
 
 	        _this.props = props;
+	        _this.clicked = false;
 	        return _this;
 	    }
 
 	    _createClass(WhiteKey, [{
 	        key: 'handleClick',
 	        value: function handleClick() {
+	            this.clicked = true;
 	            this.props.colorChange(this.props.letter);
 	        }
 	    }, {
@@ -27247,7 +27264,7 @@
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                { onClick: this.handleClick.bind(this), className: 'keyboard', style: { bottom: '0px' } },
+	                { onClick: this.handleClick.bind(this), className: 'keyboard', style: { backgroundColor: this.clicked ? 'blue' : 'white', bottom: '0px' } },
 	                this.props.letter
 	            );
 	        }
