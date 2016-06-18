@@ -1,81 +1,65 @@
-/* styles for use everywhere */
-* {
-	margin: 0;
-	padding: 0;
+.piano {
+    position:relative;
+		width: 1030px;
+    height: 400px;
+    margin: 20px;
 }
 
-.center {
-  text-align: center;
+.white {
+    position:absolute;
+    left:0px;
+		bottom:0px;
+    display:-webkit-box;
+    display:-moz-box;
+    display: box;
 }
 
-.right {
-  text-align: right;
+.white .keyboard {
+    display:-moz-box;
+    width:40px;
+    height:400px;
+    border:solid 1px black;
+    background-color: #eee;
+    -webkit-animation-name: play;
+    -webkit-animation-duration: 0.25s;
+    -webkit-animation-play-state: paused;
+    -webkit-animation-delay: 0.1s;
 }
 
-.whiteText {
-  color: white;
+@-webkit-keyframes play {
+    0% {
+        background-color: #aaa;
+    }
+    50% {
+        -webkit-transform: rotateX(30deg)
+    }
+    100% {
+        background-color: #eee;
+    }
 }
 
-.bottom {
-	position: absolute;
+.black {
+    display:-webkit-box;
+    display:-moz-box;
+    display: box;
+    position:absolute;
+		bottom:170px;
+    left: 25px;
+}
+
+.black .keyboard {
+    display:-moz-box;
+    width:30px;
+    height:230px;
+    border:solid 1px black;
+    margin-right: 10px;
+    background-color: #000;
+    -webkit-animation-name: play-black;
+    -webkit-animation-duration: 0.25s;
+    -webkit-animation-play-state: paused;
+    -webkit-animation-delay: 0.1s;
+}
+
+.content {
 	bottom: 0px;
-	width: 100%;
 }
-
-/**TEMPORARY STYLE **/
-.tempDropTop {
-	margin-top: 300px;
-}
-
-
-/* Nav bar styles*/
-.navbar {
-    background-color: transparent;
-    background: transparent;
-    border-width: 0px;
-}
-
-.mbLogoSm {
-	height: 30px;
-	width: 40px;
-}
-
-/* create space for text from top of walls */
-
-.dropTopLrg {
-	margin-top: 50px;
-}
-
-/* /app/homeWall styles */
-.homeStructure {
-  position: relative;
-	height: 720px;
-	width: 100%;
-	z-index: 1;
-}
-
-.homeBackground {
-	background: url('./../src/assets/muscle1.jpg');
-	background-attachment: fixed;
-	background-repeat: no-repeat;
-	background-position: center;
-  background-size: contain;
-}
-
-/* Logo Wall Attributes */
-.logoStructure {
-  position: relative;
-	height: 720px;
-	width: 100%;
-	z-index: 1;
-}
-
-.logoBackground {
-	background: url('./../src/assets/muscle1.jpg');
-	background-attachment: fixed;
-	background-repeat: no-repeat;
-	background-position: center;
-  background-size: contain;
-}
-
-
