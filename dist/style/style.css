@@ -2,7 +2,8 @@
     position:relative;
 		width: 1030px;
     height: 400px;
-    margin: 20px;
+    margin: auto;
+		border: solid 1px;
 }
 
 .white {

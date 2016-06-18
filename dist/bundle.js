@@ -27249,22 +27249,35 @@
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(WhiteKey).call(this, props));
 
 	        _this.props = props;
-	        _this.clicked = false;
+	        _this.changeClicked = _this.changeClicked.bind(_this);
+	        _this.state = {
+	            clicked: false
+	        };
 	        return _this;
 	    }
 
 	    _createClass(WhiteKey, [{
 	        key: 'handleClick',
 	        value: function handleClick() {
-	            this.clicked = true;
+	            this.changeClicked();
 	            this.props.colorChange(this.props.letter);
+	            setTimeout(this.changeClicked, 1000);
+	        }
+	    }, {
+	        key: 'changeClicked',
+	        value: function changeClicked() {
+	            if (this.state.clicked) {
+	                this.setState({ clicked: false });
+	            } else {
+	                this.setState({ clicked: true });
+	            }
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                { onClick: this.handleClick.bind(this), className: 'keyboard', style: { backgroundColor: this.clicked ? 'blue' : 'white', bottom: '0px' } },
+	                { onClick: this.handleClick.bind(this), className: 'keyboard', style: { backgroundColor: this.state.clicked ? 'blue' : 'white', bottom: '0px' } },
 	                this.props.letter
 	            );
 	        }
