@@ -25,3 +25,11 @@ TO START:
 `$ node server.js`
 
 Assets will be served at localhost:8080
+
+
+*NOTE the test suite used was written by myself, sorry for using something unfamiliar'*
+
+To run tests:
+
+`$ cd src/test/`
+`$ node masterTestFile.js`
