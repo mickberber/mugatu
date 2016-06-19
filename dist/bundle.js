@@ -25631,7 +25631,7 @@
 	            var _this3 = this;
 
 	            var whiteKeys = this.keys.map(function (letter, i) {
-	                return _react2.default.createElement(_whiteKey2.default, { colorChangeCycle: _this3.colorChangeCycle, BGC: _this3.state[letter], addToSequence: _this3.addToSequence, letter: letter, key: i, audio: _this3.audio[i] });
+	                return _react2.default.createElement(_whiteKey2.default, { playAudio: _this3.playAudio, colorChangeCycle: _this3.colorChangeCycle, BGC: _this3.state[letter], addToSequence: _this3.addToSequence, letter: letter, key: i, audio: _this3.audio[i] });
 	            });
 	            return _react2.default.createElement(
 	                'div',
@@ -25741,12 +25741,7 @@
 	            //change piano key colors
 	            this.props.colorChangeCycle(this.props.letter);
 	            //play note
-	            this.playAudio(this.props.audio);
-	        }
-	    }, {
-	        key: 'playAudio',
-	        value: function playAudio(mp3) {
-	            new Audio(mp3).play();
+	            this.props.playAudio(this.props.audio);
 	        }
 	    }, {
 	        key: 'render',

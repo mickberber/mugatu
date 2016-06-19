@@ -15,11 +15,7 @@ export default class WhiteKey extends Component {
         //change piano key colors
         this.props.colorChangeCycle(this.props.letter);
         //play note
-        this.playAudio(this.props.audio);
-    }
-
-    playAudio(mp3) {
-        new Audio(mp3).play();
+        this.props.playAudio(this.props.audio);
     }
 
     render() { 
