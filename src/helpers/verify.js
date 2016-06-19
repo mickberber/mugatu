@@ -1,6 +1,10 @@
 export default verify;
+
 function verify(string) {
-    for(var i = 0; i < string.length - 1; i++) {
+    if(typeof string !== 'string') {
+        return false;
+    }
+    for(var i = 0; i < string.length; i++) {
         if(i === 1 && string[i] !== ',') {
             alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
             return false;
@@ -11,7 +15,7 @@ function verify(string) {
                 return false;
             }
         } else {
-            if(!checkAgainstKeys(string[i].toUpperCase())) {
+            if(!checkAgainstKeys(string[i])) {
                 alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
                 return false;
             }
@@ -21,6 +25,7 @@ function verify(string) {
 }
 
 function checkAgainstKeys(val) {
+    val = val.toUpperCase();
     let keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
     for(var i = 0; i < keys.length; i++) {
         if(val === keys[i]) {

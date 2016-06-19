@@ -25544,7 +25544,9 @@
 	    }, {
 	        key: 'handleSequence',
 	        value: function handleSequence() {
-	            (0, _verify2.default)(this.state.text);
+	            if (!(0, _verify2.default)(this.state.text)) {
+	                return;
+	            }
 	            //runs on user inputted string
 	            var userInput = this.state.text.split(',');
 	            //use index as flag for recursion
@@ -25736,8 +25738,12 @@
 	});
 	exports.default = verify;
 
+
 	function verify(string) {
-	    for (var i = 0; i < string.length - 1; i++) {
+	    if (typeof string !== 'string') {
+	        return false;
+	    }
+	    for (var i = 0; i < string.length; i++) {
 	        if (i === 1 && string[i] !== ',') {
 	            alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
 	            return false;
@@ -25748,7 +25754,7 @@
 	                return false;
 	            }
 	        } else {
-	            if (!checkAgainstKeys(string[i].toUpperCase())) {
+	            if (!checkAgainstKeys(string[i])) {
 	                alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
 	                return false;
 	            }
@@ -25758,6 +25764,7 @@
 	}
 
 	function checkAgainstKeys(val) {
+	    val = val.toUpperCase();
 	    var keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 	    for (var i = 0; i < keys.length; i++) {
 	        if (val === keys[i]) {
