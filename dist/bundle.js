@@ -27101,6 +27101,10 @@
 
 	var _whiteKey2 = _interopRequireDefault(_whiteKey);
 
+	var _verify = __webpack_require__(251);
+
+	var _verify2 = _interopRequireDefault(_verify);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27147,6 +27151,7 @@
 	    }, {
 	        key: 'handleSequence',
 	        value: function handleSequence() {
+	            (0, _verify2.default)(this.state.text);
 	            //runs on user inputted string
 	            var userInput = this.state.text.split(',');
 	            //use index as flag for recursion
@@ -27395,6 +27400,41 @@
 	}(_react.Component);
 
 	exports.default = Splash;
+
+/***/ },
+/* 251 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = verify;
+
+	function verify(string) {
+	    for (var i = 0; i < string.length - 1; i++) {
+	        if (i % 2 !== 0 && i !== 1) {
+	            if (string[i] !== ',') {
+	                return alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
+	            }
+	        } else {
+	            if (!checkAgainstKeys(string[i])) {
+	                return alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
+	            }
+	        }
+	    }
+	}
+
+	function checkAgainstKeys(val) {
+	    var keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+	    for (var i = 0; i < keys.length; i++) {
+	        if (val === keys[i]) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
 
 /***/ }
 /******/ ]);
