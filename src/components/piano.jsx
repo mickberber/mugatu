@@ -88,17 +88,17 @@ export default class Piano extends Component {
         return (
             <div>
                 <div>{this.props.pianoType}</div>
-                <div className="piano">
-                    <div className="white">
+                <div className='piano'>
+                    <div className='white'>
                         {whiteKeys}
                     </div>
-                    <div className="black">
-                        <div className="keyboard"></div>
-                        <div className="keyboard"></div>
-                        <div className="keyboard" style={{visibility:"hidden"}}></div>
-                        <div className="keyboard"></div>
-                        <div className="keyboard"></div>
-                        <div className="keyboard"></div>
+                    <div className='black'>
+                        <div className='keyboard'></div>
+                        <div className='keyboard'></div>
+                        <div className='keyboard' style={{visibility:"hidden"}}></div>
+                        <div className='keyboard'></div>
+                        <div className='keyboard'></div>
+                        <div className='keyboard'></div>
                     </div>
                     <div>
                         <img src={this.props.img} style={{height: '400px', width: '750px', float: 'right'}}/>
@@ -107,10 +107,10 @@ export default class Piano extends Component {
                 </div>
                 <div>
                     <div>Keys Pressed: {this.state.sequence}</div>
-                    <form>
-                        <button onClick={this.handleSequence.bind(this)} className='btn btn-danger'>Play a necktie sequence</button>
-                        <input onChange={this.handleChangeText.bind(this)} placeholder='input string'></input>
-                    </form>
+                    <fieldset className='form-group'>
+                        <button onClick={this.handleSequence.bind(this)} className='btn btn-warning'>Play a necktie sequence</button>
+                        <input onChange={this.handleChangeText.bind(this)} className='form-control' placeholder='input string'></input>
+                    </fieldset>
                 </div>
             </div>
         )

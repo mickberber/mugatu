@@ -4,9 +4,6 @@ export default class WhiteKey extends Component {
     constructor(props) {
         super(props);
         this.props = props;
-        this.state = {
-            clicked: false
-        }
     }
 
     handleClick() {

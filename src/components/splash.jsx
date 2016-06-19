@@ -7,16 +7,11 @@ export default class Splash extends Component {
         return (
                 <div className='container-fluid'>
                     <div className='row'>
-                        <div className='col-xs-4'></div>
-                        <div className='col-xs-4'>
-                            <Link to='/app'>
-                                <button id='singlebutton' name='singlebutton' className='btn btn-success'>
-                                    play
-                                </button>
-                            </Link>
-                            <iframe  src='https://www.youtube.com/embed/tOrI6uqS-vk' frameBorder='0' allowFullScreen></iframe>
+                        <div className='col-xs-2'></div>
+                        <div className='col-xs-8'>
+                            <Link to='/app'><img src='./../assets/pap.png' style={{height: '400px', width: '800px'}}/></Link>
                         </div>  
-                        <div className='col-xs-4'></div>
+                        <div className='col-xs-2'></div>
                     </div>
                 </div>
                 )

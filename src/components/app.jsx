@@ -14,19 +14,27 @@ export default class App extends Component {
   }
 
   addPiano() {
-    this.state.pianos.push(<Piano img='./../assets/pknecktie5.png' pianoType={this.state.type} />);
-    this.setState({pianos: this.state.pianos});
+    //using a pianos variable, as to not mutate state
+    let pianos = this.state.pianos;
+    pianos.push(<Piano img='./../assets/pknecktie5.png' pianoType={this.state.type} />);
+    this.setState({pianos: pianos});
   }
 
   removePiano() {
-    this.state.pianos.pop();
-    this.setState({pianos: this.state.pianos});
+    //using a pianos variable, as to not mutate state
+    let pianos = this.state.pianos;
+    pianos.pop();
+    this.setState({pianos: pianos});
+  }
+
+  chooseType() {
+    console.log(event)
   }
 
   render() {
     return (
       <div>
-        <Nav addPiano={this.addPiano.bind(this)} removePiano={this.removePiano.bind(this)}/>
+        <Nav addPiano={this.addPiano.bind(this)} removePiano={this.removePiano.bind(this)} chooseType={this.chooseType.bind(this)}/>
         <Piano img='./../assets/pknecktie5.png' pianoType={this.state.type} />
         <div style={{display: 'inline'}}>{this.state.pianos}</div>
       </div>

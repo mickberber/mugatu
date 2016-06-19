@@ -75,7 +75,7 @@
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _splash = __webpack_require__(249);
+	var _splash = __webpack_require__(250);
 
 	var _splash2 = _interopRequireDefault(_splash);
 
@@ -26915,14 +26915,23 @@
 	  _createClass(App, [{
 	    key: 'addPiano',
 	    value: function addPiano() {
-	      this.state.pianos.push(_react2.default.createElement(_piano2.default, { img: './../assets/pknecktie5.png', pianoType: this.state.type }));
-	      this.setState({ pianos: this.state.pianos });
+	      //using a pianos variable, as to not mutate state
+	      var pianos = this.state.pianos;
+	      pianos.push(_react2.default.createElement(_piano2.default, { img: './../assets/pknecktie5.png', pianoType: this.state.type }));
+	      this.setState({ pianos: pianos });
 	    }
 	  }, {
 	    key: 'removePiano',
 	    value: function removePiano() {
-	      this.state.pianos.pop();
-	      this.setState({ pianos: this.state.pianos });
+	      //using a pianos variable, as to not mutate state
+	      var pianos = this.state.pianos;
+	      pianos.pop();
+	      this.setState({ pianos: pianos });
+	    }
+	  }, {
+	    key: 'chooseType',
+	    value: function chooseType() {
+	      console.log(event);
 	    }
 	  }, {
 	    key: 'render',
@@ -26930,7 +26939,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_nav2.default, { addPiano: this.addPiano.bind(this), removePiano: this.removePiano.bind(this) }),
+	        _react2.default.createElement(_nav2.default, { addPiano: this.addPiano.bind(this), removePiano: this.removePiano.bind(this), chooseType: this.chooseType.bind(this) }),
 	        _react2.default.createElement(_piano2.default, { img: './../assets/pknecktie5.png', pianoType: this.state.type }),
 	        _react2.default.createElement(
 	          'div',
@@ -27004,7 +27013,7 @@
 	                { to: '/' },
 	                _react2.default.createElement(
 	                  'button',
-	                  { className: 'btn btn-danger' },
+	                  { className: 'btn btn-warning' },
 	                  'Home'
 	                )
 	              )
@@ -27017,12 +27026,12 @@
 	                { className: 'btn-group' },
 	                _react2.default.createElement(
 	                  'button',
-	                  { type: 'button', className: 'btn btn-danger' },
+	                  { type: 'button', className: 'btn btn-warning' },
 	                  'pick-a-piano'
 	                ),
 	                _react2.default.createElement(
 	                  'button',
-	                  { type: 'button', className: 'btn btn-danger dropdown-toggle', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
+	                  { type: 'button', className: 'btn btn-warning dropdown-toggle', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
 	                  _react2.default.createElement('span', { className: 'caret' }),
 	                  _react2.default.createElement(
 	                    'span',
@@ -27035,29 +27044,29 @@
 	                  { className: 'dropdown-menu' },
 	                  _react2.default.createElement(
 	                    'li',
-	                    null,
+	                    { onClick: this.props.chooseType },
 	                    'NeckTie'
 	                  ),
 	                  _react2.default.createElement(
 	                    'li',
-	                    null,
+	                    { onClick: this.props.chooseType },
 	                    'Piano'
 	                  ),
 	                  _react2.default.createElement(
 	                    'li',
-	                    null,
+	                    { onClick: this.props.chooseType },
 	                    'Silly Mode'
 	                  )
 	                )
 	              ),
 	              _react2.default.createElement(
 	                'button',
-	                { onClick: this.props.addPiano, className: 'btn btn-danger' },
+	                { onClick: this.props.addPiano, className: 'btn btn-warning' },
 	                'Add Piano'
 	              ),
 	              _react2.default.createElement(
 	                'button',
-	                { onClick: this.props.removePiano, className: 'btn btn-danger' },
+	                { onClick: this.props.removePiano, className: 'btn btn-warning' },
 	                'Remove Piano'
 	              )
 	            )
@@ -27088,7 +27097,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _whiteKey = __webpack_require__(250);
+	var _whiteKey = __webpack_require__(249);
 
 	var _whiteKey2 = _interopRequireDefault(_whiteKey);
 
@@ -27235,14 +27244,14 @@
 	                        this.state.sequence
 	                    ),
 	                    _react2.default.createElement(
-	                        'form',
-	                        null,
+	                        'fieldset',
+	                        { className: 'form-group' },
 	                        _react2.default.createElement(
 	                            'button',
-	                            { onClick: this.handleSequence.bind(this), className: 'btn btn-danger' },
+	                            { onClick: this.handleSequence.bind(this), className: 'btn btn-warning' },
 	                            'Play a necktie sequence'
 	                        ),
-	                        _react2.default.createElement('input', { onChange: this.handleChangeText.bind(this), placeholder: 'input string' })
+	                        _react2.default.createElement('input', { onChange: this.handleChangeText.bind(this), className: 'form-control', placeholder: 'input string' })
 	                    )
 	                )
 	            );
@@ -27256,6 +27265,70 @@
 
 /***/ },
 /* 249 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var WhiteKey = function (_Component) {
+	    _inherits(WhiteKey, _Component);
+
+	    function WhiteKey(props) {
+	        _classCallCheck(this, WhiteKey);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(WhiteKey).call(this, props));
+
+	        _this.props = props;
+	        return _this;
+	    }
+
+	    _createClass(WhiteKey, [{
+	        key: 'handleClick',
+	        value: function handleClick() {
+	            this.props.addToSequence(this.props.letter);
+	            this.props.colorChangeCycle(this.props.letter);
+	            this.playAudio(this.props.audio);
+	        }
+	    }, {
+	        key: 'playAudio',
+	        value: function playAudio(mp3) {
+	            new Audio(mp3).play();
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { onClick: this.handleClick.bind(this), className: 'keyboard', style: { backgroundColor: this.props.BGC } },
+	                this.props.letter
+	            );
+	        }
+	    }]);
+
+	    return WhiteKey;
+	}(_react.Component);
+
+	exports.default = WhiteKey;
+
+/***/ },
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27302,22 +27375,17 @@
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'row' },
-	                    _react2.default.createElement('div', { className: 'col-xs-4' }),
+	                    _react2.default.createElement('div', { className: 'col-xs-2' }),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'col-xs-4' },
+	                        { className: 'col-xs-8' },
 	                        _react2.default.createElement(
 	                            _reactRouter.Link,
 	                            { to: '/app' },
-	                            _react2.default.createElement(
-	                                'button',
-	                                { id: 'singlebutton', name: 'singlebutton', className: 'btn btn-success' },
-	                                'play'
-	                            )
-	                        ),
-	                        _react2.default.createElement('iframe', { src: 'https://www.youtube.com/embed/tOrI6uqS-vk', frameBorder: '0', allowFullScreen: true })
+	                            _react2.default.createElement('img', { src: './../assets/pap.png', style: { height: '400px', width: '800px' } })
+	                        )
 	                    ),
-	                    _react2.default.createElement('div', { className: 'col-xs-4' })
+	                    _react2.default.createElement('div', { className: 'col-xs-2' })
 	                )
 	            );
 	        }
@@ -27327,73 +27395,6 @@
 	}(_react.Component);
 
 	exports.default = Splash;
-
-/***/ },
-/* 250 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var WhiteKey = function (_Component) {
-	    _inherits(WhiteKey, _Component);
-
-	    function WhiteKey(props) {
-	        _classCallCheck(this, WhiteKey);
-
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(WhiteKey).call(this, props));
-
-	        _this.props = props;
-	        _this.state = {
-	            clicked: false
-	        };
-	        return _this;
-	    }
-
-	    _createClass(WhiteKey, [{
-	        key: 'handleClick',
-	        value: function handleClick() {
-	            this.props.addToSequence(this.props.letter);
-	            this.props.colorChangeCycle(this.props.letter);
-	            this.playAudio(this.props.audio);
-	        }
-	    }, {
-	        key: 'playAudio',
-	        value: function playAudio(mp3) {
-	            new Audio(mp3).play();
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { onClick: this.handleClick.bind(this), className: 'keyboard', style: { backgroundColor: this.props.BGC } },
-	                this.props.letter
-	            );
-	        }
-	    }]);
-
-	    return WhiteKey;
-	}(_react.Component);
-
-	exports.default = WhiteKey;
 
 /***/ }
 /******/ ]);
