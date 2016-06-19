@@ -1,4 +1,6 @@
-export default verify;
+var tests = require('mc-testing');
+var write = tests.write;
+
 function verify(string) {
     for(var i = 0; i < string.length - 1; i++) {
         if(i === 1 && string[i] !== ',') {
@@ -29,3 +31,12 @@ function checkAgainstKeys(val) {
     }
     return false;
 }
+
+module.exports = write.testFile(
+    write.description('verify should return false when passed and object')(
+        tests.compareYield(
+            verify({}), false
+        )
+    )
+);
+
