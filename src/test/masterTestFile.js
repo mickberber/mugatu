@@ -1,6 +1,6 @@
 var tests = require('mc-testing');
 var write = tests.write;
-var helper = './testTheHelpers';
+var helper = require('./testTheHelpers');
 
 let allTests = [
     helper
