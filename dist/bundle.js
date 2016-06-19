@@ -26929,7 +26929,7 @@
 	        'div',
 	        null,
 	        _react2.default.createElement(_nav2.default, { addPiano: this.addPiano.bind(this), removePiano: this.removePiano.bind(this) }),
-	        _react2.default.createElement(_piano2.default, null),
+	        _react2.default.createElement(_piano2.default, { color: 'white' }),
 	        _react2.default.createElement(
 	          'div',
 	          { style: { display: 'inline' } },
@@ -27072,13 +27072,13 @@
 	        _this.state = {
 	            sequence: [],
 	            text: '',
-	            'C': 'white',
-	            'D': 'white',
-	            'E': 'white',
-	            'F': 'white',
-	            'G': 'white',
-	            'A': 'white',
-	            'B': 'white'
+	            'C': _this.props.color,
+	            'D': _this.props.color,
+	            'E': _this.props.color,
+	            'F': _this.props.color,
+	            'G': _this.props.color,
+	            'A': _this.props.color,
+	            'B': _this.props.color
 	        };
 	        return _this;
 	    }
@@ -27096,34 +27096,37 @@
 	    }, {
 	        key: 'handleSequence',
 	        value: function handleSequence() {
-	            //run on user input
+	            //runs on user inputted string
 	            var userInput = this.state.text.split(',');
+	            //use index as flag for recursion
 	            var index = 0;
-	            // userInput.forEach((letter, i) => {
-	            //     this.colorChangeCycle(letter.toUpperCase());
-	            // });
-	            function run() {
+
+	            function createVisibleSync() {
+	                // runs subsequent calls, returns out of recursion if index has increased past last index in sequence
 	                this.colorChangeCycle(userInput[index].toUpperCase());
 	                index++;
 	                if (index >= userInput.length) {
 	                    return;
 	                } else {
-	                    setTimeout(run.bind(this), 1000);
+	                    setTimeout(createVisibleSync.bind(this), 1000);
 	                }
 	            }
+	            //run call on first item in sequence
 	            this.colorChangeCycle(userInput[index].toUpperCase());
 	            index++;
-	            setTimeout(run.bind(this), 1000);
+	            //delays subsequent calls
+	            setTimeout(createVisibleSync.bind(this), 1000);
 	        }
 	    }, {
 	        key: 'colorChangeCycle',
 	        value: function colorChangeCycle(letter) {
 	            var _this2 = this;
 
-	            //used to change colors
+	            //create new object to reset state with dynamic key value
 	            var newState = {};
 	            newState[letter] = this.colorChange(this.state[letter]);
 	            this.setState(newState);
+	            //setTimeout to revert to original color
 	            setTimeout(function () {
 	                var color = _this2.colorChange.bind(_this2, _this2.state[letter])();
 	                newState[letter] = color;
@@ -27171,8 +27174,7 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        null,
-	                        _react2.default.createElement('img', { src: './../assets/mugatu-o.gif', style: { height: '400px', width: '500px', float: 'right' } }),
-	                        _react2.default.createElement('img', { src: './../assets/pknecktie.png', style: { height: '400px', width: '250px', float: 'right' } })
+	                        _react2.default.createElement('img', { src: './../assets/pknecktie5.png', style: { height: '400px', width: '750px', float: 'right' } })
 	                    ),
 	                    _react2.default.createElement('br', null)
 	                ),
@@ -27249,24 +27251,26 @@
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                null,
+	                { className: 'container-fluid' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'form-group' },
-	                    _react2.default.createElement('label', { className: 'col-md-4 control-label', 'for': 'singlebutton' }),
+	                    { className: 'row' },
+	                    _react2.default.createElement('div', { className: 'col-xs-4' }),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'col-md-4 center-block' },
+	                        { className: 'col-xs-4' },
 	                        _react2.default.createElement(
 	                            _reactRouter.Link,
 	                            { to: '/app' },
 	                            _react2.default.createElement(
 	                                'button',
-	                                { id: 'singlebutton', name: 'singlebutton', className: 'btn btn-success center-block' },
+	                                { id: 'singlebutton', name: 'singlebutton', className: 'btn btn-success' },
 	                                'play'
 	                            )
-	                        )
-	                    )
+	                        ),
+	                        _react2.default.createElement('iframe', { src: 'https://www.youtube.com/embed/tOrI6uqS-vk', frameBorder: '0', allowFullScreen: true })
+	                    ),
+	                    _react2.default.createElement('div', { className: 'col-xs-4' })
 	                )
 	            );
 	        }

@@ -8,13 +8,13 @@ export default class Piano extends Component {
         this.state = {
             sequence: [],
             text: '',
-            'C': 'white',
-            'D': 'white',
-            'E': 'white',
-            'F': 'white',
-            'G': 'white',
-            'A': 'white',
-            'B': 'white'
+            'C': this.props.color,
+            'D': this.props.color,
+            'E': this.props.color,
+            'F': this.props.color,
+            'G': this.props.color,
+            'A': this.props.color,
+            'B': this.props.color
         };
     }
 
@@ -27,31 +27,34 @@ export default class Piano extends Component {
     }
 
     handleSequence() {
-        //run on user input
+        //runs on user inputted string
         let userInput = this.state.text.split(',');
+        //use index as flag for recursion
         let index = 0;
-        // userInput.forEach((letter, i) => {
-        //     this.colorChangeCycle(letter.toUpperCase());
-        // });
-        function run() {
+
+        function createVisibleSync() {
+            // runs subsequent calls, returns out of recursion if index has increased past last index in sequence
             this.colorChangeCycle(userInput[index].toUpperCase());
             index++;
             if(index >= userInput.length) {
                 return;
             } else {
-                setTimeout(run.bind(this), 1000);
+                setTimeout(createVisibleSync.bind(this), 1000);
             }
         }
+        //run call on first item in sequence
         this.colorChangeCycle(userInput[index].toUpperCase());
         index++;
-        setTimeout(run.bind(this), 1000);
+        //delays subsequent calls
+        setTimeout(createVisibleSync.bind(this), 1000);
     }
 
     colorChangeCycle(letter) {
-        //used to change colors
+        //create new object to reset state with dynamic key value
         let newState = {};
         newState[letter] = this.colorChange(this.state[letter]);
         this.setState(newState);
+        //setTimeout to revert to original color
         setTimeout(
             () => { 
                 let color = (this.colorChange.bind(this, this.state[letter]))();
@@ -71,7 +74,7 @@ export default class Piano extends Component {
 
     render() {
         let whiteKeys = this.keys.map((letter, i) => { 
-            return <WhiteKey colorChangeCycle={this.colorChangeCycle.bind(this)} BGC={this.state[letter]} addToSequence={this.addToSequence.bind(this)} letter={letter} key={i}/> })
+            return <WhiteKey colorChangeCycle={this.colorChangeCycle.bind(this)} BGC={this.state[letter]} addToSequence={this.addToSequence.bind(this)} letter={letter} key={i}/> });
         return (
             <div>
                 <div className="piano">
@@ -87,8 +90,7 @@ export default class Piano extends Component {
                         <div className="keyboard"></div>
                     </div>
                     <div>
-                        <img src='./../assets/mugatu-o.gif' style={{height: '400px', width: '500px', float: 'right'}}/>
-                        <img src='./../assets/pknecktie.png' style={{height: '400px', width: '250px', float: 'right'}}/>
+                        <img src='./../assets/pknecktie5.png' style={{height: '400px', width: '750px', float: 'right'}}/>
                     </div>
                     <br />
                 </div>
