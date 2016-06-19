@@ -6,7 +6,8 @@ export default class Piano extends Component {
         super(props);
         this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
         this.state = {
-            sequence: []
+            sequence: [],
+            text: ''
         }
     }
 
@@ -14,6 +15,11 @@ export default class Piano extends Component {
         console.log(this.state.sequence);
         this.state.sequence.push(val);
         this.setState({sequence: this.state.sequence});
+    }
+
+    handleChangeText(event) {
+        console.log(event.target.value);
+        //this.setState({text: event.target.value});
     }
 
     render() {
@@ -38,9 +44,11 @@ export default class Piano extends Component {
                     </div>
                     <br />
                 </div>
-                <div>{this.state.sequence}</div>
                 <div>
+                    <div>{this.state.sequence}</div>
                     <form>
+                        <button className='btn btn-primary'>Play a necktie sequence</button>
+                        <input onChange={this.handleChangeText} placeholder='input string'></input>
                     </form>
                 </div>
             </div>

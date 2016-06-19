@@ -71,11 +71,11 @@
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _app = __webpack_require__(252);
+	var _app = __webpack_require__(246);
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _splash = __webpack_require__(254);
+	var _splash = __webpack_require__(249);
 
 	var _splash2 = _interopRequireDefault(_splash);
 
@@ -26865,10 +26865,87 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 246 */,
-/* 247 */,
-/* 248 */,
-/* 249 */
+/* 246 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _nav = __webpack_require__(247);
+
+	var _nav2 = _interopRequireDefault(_nav);
+
+	var _piano = __webpack_require__(248);
+
+	var _piano2 = _interopRequireDefault(_piano);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var App = function (_Component) {
+	  _inherits(App, _Component);
+
+	  function App(props) {
+	    _classCallCheck(this, App);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
+
+	    _this.state = {
+	      pianos: []
+	    };
+	    return _this;
+	  }
+
+	  _createClass(App, [{
+	    key: 'addPiano',
+	    value: function addPiano() {
+	      this.state.pianos.push(_react2.default.createElement(_piano2.default, null));
+	      this.setState({ pianos: this.state.pianos });
+	    }
+	  }, {
+	    key: 'removePiano',
+	    value: function removePiano() {
+	      this.state.pianos.pop(_react2.default.createElement(_piano2.default, null));
+	      this.setState({ pianos: this.state.pianos });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_nav2.default, { addPiano: this.addPiano.bind(this), removePiano: this.removePiano.bind(this) }),
+	        _react2.default.createElement(_piano2.default, null),
+	        _react2.default.createElement(
+	          'div',
+	          { style: { display: 'inline' } },
+	          this.state.pianos
+	        )
+	      );
+	    }
+	  }]);
+
+	  return App;
+	}(_react.Component);
+
+	exports.default = App;
+
+/***/ },
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26956,15 +27033,13 @@
 	exports.default = Nav;
 
 /***/ },
-/* 250 */,
-/* 251 */,
-/* 252 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -26973,13 +27048,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _nav = __webpack_require__(249);
+	var _whiteKey = __webpack_require__(250);
 
-	var _nav2 = _interopRequireDefault(_nav);
-
-	var _piano = __webpack_require__(255);
-
-	var _piano2 = _interopRequireDefault(_piano);
+	var _whiteKey2 = _interopRequireDefault(_whiteKey);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26989,57 +27060,102 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var App = function (_Component) {
-	  _inherits(App, _Component);
+	var Piano = function (_Component) {
+	    _inherits(Piano, _Component);
 
-	  function App(props) {
-	    _classCallCheck(this, App);
+	    function Piano(props) {
+	        _classCallCheck(this, Piano);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Piano).call(this, props));
 
-	    _this.state = {
-	      pianos: []
-	    };
-	    return _this;
-	  }
-
-	  _createClass(App, [{
-	    key: 'addPiano',
-	    value: function addPiano() {
-	      this.state.pianos.push(_react2.default.createElement(_piano2.default, null));
-	      this.setState({ pianos: this.state.pianos });
+	        _this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+	        _this.state = {
+	            sequence: [],
+	            text: ''
+	        };
+	        return _this;
 	    }
-	  }, {
-	    key: 'removePiano',
-	    value: function removePiano() {
-	      this.state.pianos.pop(_react2.default.createElement(_piano2.default, null));
-	      this.setState({ pianos: this.state.pianos });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(_nav2.default, { addPiano: this.addPiano.bind(this), removePiano: this.removePiano.bind(this) }),
-	        _react2.default.createElement(_piano2.default, null),
-	        _react2.default.createElement(
-	          'div',
-	          { style: { display: 'inline' } },
-	          this.state.pianos
-	        )
-	      );
-	    }
-	  }]);
 
-	  return App;
+	    _createClass(Piano, [{
+	        key: 'colorChange',
+	        value: function colorChange(val) {
+	            console.log(this.state.sequence);
+	            this.state.sequence.push(val);
+	            this.setState({ sequence: this.state.sequence });
+	        }
+	    }, {
+	        key: 'handleChangeText',
+	        value: function handleChangeText(event) {
+	            console.log(event.target.value);
+	            //this.setState({text: event.target.value});
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+
+	            var whiteKeys = this.keys.map(function (letter, i) {
+	                return _react2.default.createElement(_whiteKey2.default, { colorChange: _this2.colorChange.bind(_this2), letter: letter, key: i });
+	            });
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'piano' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'white' },
+	                        whiteKeys
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'black' },
+	                        _react2.default.createElement('div', { className: 'keyboard' }),
+	                        _react2.default.createElement('div', { className: 'keyboard' }),
+	                        _react2.default.createElement('div', { className: 'keyboard', style: { visibility: "hidden" } }),
+	                        _react2.default.createElement('div', { className: 'keyboard' }),
+	                        _react2.default.createElement('div', { className: 'keyboard' }),
+	                        _react2.default.createElement('div', { className: 'keyboard' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement('img', { src: './../assets/mugatu-o.gif', style: { height: '400px', width: '500px', float: 'right' } }),
+	                        _react2.default.createElement('img', { src: './../assets/pknecktie.png', style: { height: '400px', width: '250px', float: 'right' } })
+	                    ),
+	                    _react2.default.createElement('br', null)
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        this.state.sequence
+	                    ),
+	                    _react2.default.createElement(
+	                        'form',
+	                        null,
+	                        _react2.default.createElement(
+	                            'button',
+	                            { className: 'btn btn-primary' },
+	                            'Play a necktie sequence'
+	                        ),
+	                        _react2.default.createElement('input', { onChange: this.handleChangeText, placeholder: 'input string' })
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Piano;
 	}(_react.Component);
 
-	exports.default = App;
+	exports.default = Piano;
 
 /***/ },
-/* 253 */,
-/* 254 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27056,7 +27172,7 @@
 
 	var _reactRouter = __webpack_require__(186);
 
-	var _nav = __webpack_require__(249);
+	var _nav = __webpack_require__(247);
 
 	var _nav2 = _interopRequireDefault(_nav);
 
@@ -27111,113 +27227,7 @@
 	exports.default = Splash;
 
 /***/ },
-/* 255 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _whiteKey = __webpack_require__(256);
-
-	var _whiteKey2 = _interopRequireDefault(_whiteKey);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Piano = function (_Component) {
-	    _inherits(Piano, _Component);
-
-	    function Piano(props) {
-	        _classCallCheck(this, Piano);
-
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Piano).call(this, props));
-
-	        _this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
-	        _this.state = {
-	            sequence: []
-	        };
-	        return _this;
-	    }
-
-	    _createClass(Piano, [{
-	        key: 'colorChange',
-	        value: function colorChange(val) {
-	            console.log(this.state.sequence);
-	            this.state.sequence.push(val);
-	            this.setState({ sequence: this.state.sequence });
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _this2 = this;
-
-	            var whiteKeys = this.keys.map(function (letter, i) {
-	                return _react2.default.createElement(_whiteKey2.default, { colorChange: _this2.colorChange.bind(_this2), letter: letter, key: i });
-	            });
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'piano' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'white' },
-	                        whiteKeys
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'black' },
-	                        _react2.default.createElement('div', { className: 'keyboard' }),
-	                        _react2.default.createElement('div', { className: 'keyboard' }),
-	                        _react2.default.createElement('div', { className: 'keyboard', style: { visibility: "hidden" } }),
-	                        _react2.default.createElement('div', { className: 'keyboard' }),
-	                        _react2.default.createElement('div', { className: 'keyboard' }),
-	                        _react2.default.createElement('div', { className: 'keyboard' })
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        null,
-	                        _react2.default.createElement('img', { src: './../assets/mugatu-o.gif', style: { height: '400px', width: '500px', float: 'right' } }),
-	                        _react2.default.createElement('img', { src: './../assets/pknecktie.png', style: { height: '400px', width: '250px', float: 'right' } })
-	                    ),
-	                    _react2.default.createElement('br', null)
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    null,
-	                    this.state.sequence
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    null,
-	                    _react2.default.createElement('form', null)
-	                )
-	            );
-	        }
-	    }]);
-
-	    return Piano;
-	}(_react.Component);
-
-	exports.default = Piano;
-
-/***/ },
-/* 256 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
