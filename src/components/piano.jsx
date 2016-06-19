@@ -5,16 +5,25 @@ export default class Piano extends Component {
     constructor(props){
         super(props);
         this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+        this.audio = [
+            './../assets/sounds/C.wav',
+            './../assets/sounds/D.wav',
+            './../assets/sounds/E.wav',
+            './../assets/sounds/F.wav',
+            './../assets/sounds/G.wav',
+            './../assets/sounds/A.wav',
+            './../assets/sounds/B.wav'
+        ];
         this.state = {
             sequence: [],
             text: '',
-            'C': this.props.color,
-            'D': this.props.color,
-            'E': this.props.color,
-            'F': this.props.color,
-            'G': this.props.color,
-            'A': this.props.color,
-            'B': this.props.color
+            'C': 'white',
+            'D': 'white',
+            'E': 'white',
+            'F': 'white',
+            'G': 'white',
+            'A': 'white',
+            'B': 'white'
         };
     }
 
@@ -74,7 +83,7 @@ export default class Piano extends Component {
 
     render() {
         let whiteKeys = this.keys.map((letter, i) => { 
-            return <WhiteKey colorChangeCycle={this.colorChangeCycle.bind(this)} BGC={this.state[letter]} addToSequence={this.addToSequence.bind(this)} letter={letter} key={i}/> });
+            return <WhiteKey colorChangeCycle={this.colorChangeCycle.bind(this)} BGC={this.state[letter]} addToSequence={this.addToSequence.bind(this)} letter={letter} key={i} audio={this.audio[i]}/> });
         return (
             <div>
                 <div className="piano">
@@ -97,7 +106,7 @@ export default class Piano extends Component {
                 <div>
                     <div>Keys Pressed: {this.state.sequence}</div>
                     <form>
-                        <button onClick={this.handleSequence.bind(this)} className='btn btn-primary'>Play a necktie sequence</button>
+                        <button onClick={this.handleSequence.bind(this)} className='btn btn-danger'>Play a necktie sequence</button>
                         <input onChange={this.handleChangeText.bind(this)} placeholder='input string'></input>
                     </form>
                 </div>

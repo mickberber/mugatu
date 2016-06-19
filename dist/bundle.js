@@ -26929,7 +26929,7 @@
 	        'div',
 	        null,
 	        _react2.default.createElement(_nav2.default, { addPiano: this.addPiano.bind(this), removePiano: this.removePiano.bind(this) }),
-	        _react2.default.createElement(_piano2.default, { color: 'white' }),
+	        _react2.default.createElement(_piano2.default, null),
 	        _react2.default.createElement(
 	          'div',
 	          { style: { display: 'inline' } },
@@ -26983,6 +26983,11 @@
 	  }
 
 	  _createClass(Nav, [{
+	    key: 'audioTest',
+	    value: function audioTest(mp3) {
+	      new Audio(mp3).play();
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -27002,7 +27007,7 @@
 	                { to: '/' },
 	                _react2.default.createElement(
 	                  'button',
-	                  { className: 'btn btn-warning' },
+	                  { className: 'btn btn-danger' },
 	                  'Home'
 	                )
 	              )
@@ -27011,8 +27016,58 @@
 	              'ul',
 	              { className: 'nav navbar-right' },
 	              _react2.default.createElement(
+	                'div',
+	                { className: 'btn-group' },
+	                _react2.default.createElement(
+	                  'button',
+	                  { type: 'button', className: 'btn btn-danger' },
+	                  'pick-a-piano'
+	                ),
+	                _react2.default.createElement(
+	                  'button',
+	                  { type: 'button', className: 'btn btn-danger dropdown-toggle', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
+	                  _react2.default.createElement('span', { className: 'caret' }),
+	                  _react2.default.createElement(
+	                    'span',
+	                    { className: 'sr-only' },
+	                    'Toggle Dropdown'
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'ul',
+	                  { className: 'dropdown-menu' },
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'Action'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'Another action'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'Something else here'
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
 	                'button',
-	                { onClick: this.props.addPiano, className: 'btn btn-success' },
+	                { onClick: this.props.addPiano, className: 'btn btn-danger' },
 	                'Add Piano'
 	              ),
 	              _react2.default.createElement(
@@ -27069,16 +27124,17 @@
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Piano).call(this, props));
 
 	        _this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+	        _this.audio = ['./../assets/sounds/C.wav', './../assets/sounds/D.wav', './../assets/sounds/E.wav', './../assets/sounds/F.wav', './../assets/sounds/G.wav', './../assets/sounds/A.wav', './../assets/sounds/B.wav'];
 	        _this.state = {
 	            sequence: [],
 	            text: '',
-	            'C': _this.props.color,
-	            'D': _this.props.color,
-	            'E': _this.props.color,
-	            'F': _this.props.color,
-	            'G': _this.props.color,
-	            'A': _this.props.color,
-	            'B': _this.props.color
+	            'C': 'white',
+	            'D': 'white',
+	            'E': 'white',
+	            'F': 'white',
+	            'G': 'white',
+	            'A': 'white',
+	            'B': 'white'
 	        };
 	        return _this;
 	    }
@@ -27148,7 +27204,7 @@
 	            var _this3 = this;
 
 	            var whiteKeys = this.keys.map(function (letter, i) {
-	                return _react2.default.createElement(_whiteKey2.default, { colorChangeCycle: _this3.colorChangeCycle.bind(_this3), BGC: _this3.state[letter], addToSequence: _this3.addToSequence.bind(_this3), letter: letter, key: i });
+	                return _react2.default.createElement(_whiteKey2.default, { colorChangeCycle: _this3.colorChangeCycle.bind(_this3), BGC: _this3.state[letter], addToSequence: _this3.addToSequence.bind(_this3), letter: letter, key: i, audio: _this3.audio[i] });
 	            });
 	            return _react2.default.createElement(
 	                'div',
@@ -27192,7 +27248,7 @@
 	                        null,
 	                        _react2.default.createElement(
 	                            'button',
-	                            { onClick: this.handleSequence.bind(this), className: 'btn btn-primary' },
+	                            { onClick: this.handleSequence.bind(this), className: 'btn btn-danger' },
 	                            'Play a necktie sequence'
 	                        ),
 	                        _react2.default.createElement('input', { onChange: this.handleChangeText.bind(this), placeholder: 'input string' })
@@ -27325,6 +27381,12 @@
 	        value: function handleClick() {
 	            this.props.addToSequence(this.props.letter);
 	            this.props.colorChangeCycle(this.props.letter);
+	            this.playAudio(this.props.audio);
+	        }
+	    }, {
+	        key: 'playAudio',
+	        value: function playAudio(mp3) {
+	            new Audio(mp3).play();
 	        }
 	    }, {
 	        key: 'render',

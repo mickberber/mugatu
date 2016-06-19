@@ -25,7 +25,7 @@ export default class App extends Component {
     return (
       <div>
         <Nav addPiano={this.addPiano.bind(this)} removePiano={this.removePiano.bind(this)}/>
-        <Piano color='white' />
+        <Piano />
         <div style={{display: 'inline'}}>{this.state.pianos}</div>
       </div>
     );
