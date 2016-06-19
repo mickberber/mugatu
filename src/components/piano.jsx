@@ -29,7 +29,9 @@ export default class Piano extends Component {
     handleSequence() {
         //run on user input
         let userInput = this.state.text.split(',');
-        userInput.forEach((letter) => { console.log(letter) });
+        userInput.forEach((letter) => {
+            this.colorChangeCycle(letter.toUpperCase());
+        });
     }
 
     colorChangeCycle(letter) {
@@ -37,12 +39,13 @@ export default class Piano extends Component {
         let newState = {};
         newState[letter] = this.colorChange(this.state[letter]);
         this.setState(newState);
-        setTimeout(() => { 
-            let color = (this.colorChange.bind(this, this.state[letter]))();
-            newState[letter] = color;
-            console.log(newState)
-            this.setState(newState);
-         }, 1000);
+        setTimeout(
+            () => { 
+                let color = (this.colorChange.bind(this, this.state[letter]))();
+                newState[letter] = color;
+                this.setState(newState);
+            }, 
+         1000);
     }
 
     colorChange(color) {
