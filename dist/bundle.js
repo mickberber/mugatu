@@ -26905,7 +26905,9 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 
 	    _this.state = {
-	      pianos: []
+	      pianos: [],
+	      img: './../assets/pknecktie5.png',
+	      type: 'NECKTIE'
 	    };
 	    return _this;
 	  }
@@ -26913,13 +26915,13 @@
 	  _createClass(App, [{
 	    key: 'addPiano',
 	    value: function addPiano() {
-	      this.state.pianos.push(_react2.default.createElement(_piano2.default, null));
+	      this.state.pianos.push(_react2.default.createElement(_piano2.default, { img: './../assets/pknecktie5.png', pianoType: this.state.type }));
 	      this.setState({ pianos: this.state.pianos });
 	    }
 	  }, {
 	    key: 'removePiano',
 	    value: function removePiano() {
-	      this.state.pianos.pop(_react2.default.createElement(_piano2.default, null));
+	      this.state.pianos.pop();
 	      this.setState({ pianos: this.state.pianos });
 	    }
 	  }, {
@@ -26929,7 +26931,7 @@
 	        'div',
 	        null,
 	        _react2.default.createElement(_nav2.default, { addPiano: this.addPiano.bind(this), removePiano: this.removePiano.bind(this) }),
-	        _react2.default.createElement(_piano2.default, null),
+	        _react2.default.createElement(_piano2.default, { img: './../assets/pknecktie5.png', pianoType: this.state.type }),
 	        _react2.default.createElement(
 	          'div',
 	          { style: { display: 'inline' } },
@@ -26983,11 +26985,6 @@
 	  }
 
 	  _createClass(Nav, [{
-	    key: 'audioTest',
-	    value: function audioTest(mp3) {
-	      new Audio(mp3).play();
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -27039,29 +27036,17 @@
 	                  _react2.default.createElement(
 	                    'li',
 	                    null,
-	                    _react2.default.createElement(
-	                      'a',
-	                      { href: '#' },
-	                      'Action'
-	                    )
+	                    'NeckTie'
 	                  ),
 	                  _react2.default.createElement(
 	                    'li',
 	                    null,
-	                    _react2.default.createElement(
-	                      'a',
-	                      { href: '#' },
-	                      'Another action'
-	                    )
+	                    'Piano'
 	                  ),
 	                  _react2.default.createElement(
 	                    'li',
 	                    null,
-	                    _react2.default.createElement(
-	                      'a',
-	                      { href: '#' },
-	                      'Something else here'
-	                    )
+	                    'Silly Mode'
 	                  )
 	                )
 	              ),
@@ -27123,6 +27108,7 @@
 
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Piano).call(this, props));
 
+	        _this.props = props;
 	        _this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 	        _this.audio = ['./../assets/sounds/C.wav', './../assets/sounds/D.wav', './../assets/sounds/E.wav', './../assets/sounds/F.wav', './../assets/sounds/G.wav', './../assets/sounds/A.wav', './../assets/sounds/B.wav'];
 	        _this.state = {
@@ -27211,6 +27197,11 @@
 	                null,
 	                _react2.default.createElement(
 	                    'div',
+	                    null,
+	                    this.props.pianoType
+	                ),
+	                _react2.default.createElement(
+	                    'div',
 	                    { className: 'piano' },
 	                    _react2.default.createElement(
 	                        'div',
@@ -27230,7 +27221,7 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        null,
-	                        _react2.default.createElement('img', { src: './../assets/pknecktie5.png', style: { height: '400px', width: '750px', float: 'right' } })
+	                        _react2.default.createElement('img', { src: this.props.img, style: { height: '400px', width: '750px', float: 'right' } })
 	                    ),
 	                    _react2.default.createElement('br', null)
 	                ),

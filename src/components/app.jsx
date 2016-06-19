@@ -7,17 +7,19 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      pianos: []
+      pianos: [],
+      img: './../assets/pknecktie5.png',
+      type: 'NECKTIE'
     };
   }
 
   addPiano() {
-    this.state.pianos.push(<Piano />);
+    this.state.pianos.push(<Piano img='./../assets/pknecktie5.png' pianoType={this.state.type} />);
     this.setState({pianos: this.state.pianos});
   }
 
   removePiano() {
-    this.state.pianos.pop(<Piano />);
+    this.state.pianos.pop();
     this.setState({pianos: this.state.pianos});
   }
 
@@ -25,7 +27,7 @@ export default class App extends Component {
     return (
       <div>
         <Nav addPiano={this.addPiano.bind(this)} removePiano={this.removePiano.bind(this)}/>
-        <Piano />
+        <Piano img='./../assets/pknecktie5.png' pianoType={this.state.type} />
         <div style={{display: 'inline'}}>{this.state.pianos}</div>
       </div>
     );

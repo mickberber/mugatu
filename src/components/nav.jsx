@@ -7,10 +7,6 @@ export default class Nav extends Component {
     this.props = props
   }
 
-  audioTest(mp3) {
-    new Audio(mp3).play();
-  }
-
   render() {
     return (
         <nav className='navbar navbar-inverse'>
@@ -27,9 +23,9 @@ export default class Nav extends Component {
                     <span className='sr-only'>Toggle Dropdown</span>
                   </button>
                   <ul className='dropdown-menu'>
-                    <li><a href='#'>Action</a></li>
-                    <li><a href='#'>Another action</a></li>
-                    <li><a href='#'>Something else here</a></li>
+                    <li>NeckTie</li>
+                    <li>Piano</li>
+                    <li>Silly Mode</li>
                   </ul>
                 </div>
                 <button onClick={this.props.addPiano} className='btn btn-danger'>Add Piano</button>

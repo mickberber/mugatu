@@ -1,15 +1,14 @@
 .piano {
     position:relative;
-		width: 1030px;
+	width: 1030px;
     height: 400px;
     margin: auto;
-		border: solid 1px;
 }
 
 .white {
     position:absolute;
     left:0px;
-		bottom:0px;
+	bottom:0px;
     display:-webkit-box;
     display:-moz-box;
     display: box;
