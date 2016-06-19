@@ -27071,31 +27071,81 @@
 	        _this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 	        _this.state = {
 	            sequence: [],
-	            text: ''
+	            text: '',
+	            'C': 'white',
+	            'D': 'white',
+	            'E': 'white',
+	            'F': 'white',
+	            'G': 'white',
+	            'A': 'white',
+	            'B': 'white'
 	        };
 	        return _this;
 	    }
 
 	    _createClass(Piano, [{
-	        key: 'colorChange',
-	        value: function colorChange(val) {
-	            console.log(this.state.sequence);
-	            this.state.sequence.push(val);
-	            this.setState({ sequence: this.state.sequence });
+	        key: 'addToSequence',
+	        value: function addToSequence(val) {
+	            this.setState({ sequence: this.state.sequence + val });
 	        }
 	    }, {
 	        key: 'handleChangeText',
 	        value: function handleChangeText(event) {
-	            console.log(event.target.value);
-	            //this.setState({text: event.target.value});
+	            this.setState({ text: event.target.value });
+	        }
+	    }, {
+	        key: 'handleSequence',
+	        value: function handleSequence() {
+	            //run on user input
+	            var userInput = this.state.text.split(',');
+	            var index = 0;
+	            // userInput.forEach((letter, i) => {
+	            //     this.colorChangeCycle(letter.toUpperCase());
+	            // });
+	            function run() {
+	                this.colorChangeCycle(userInput[index].toUpperCase());
+	                index++;
+	                if (index >= userInput.length) {
+	                    return;
+	                } else {
+	                    setTimeout(run.bind(this), 1000);
+	                }
+	            }
+	            this.colorChangeCycle(userInput[index].toUpperCase());
+	            index++;
+	            setTimeout(run.bind(this), 1000);
+	        }
+	    }, {
+	        key: 'colorChangeCycle',
+	        value: function colorChangeCycle(letter) {
+	            var _this2 = this;
+
+	            //used to change colors
+	            var newState = {};
+	            newState[letter] = this.colorChange(this.state[letter]);
+	            this.setState(newState);
+	            setTimeout(function () {
+	                var color = _this2.colorChange.bind(_this2, _this2.state[letter])();
+	                newState[letter] = color;
+	                _this2.setState(newState);
+	            }, 1000);
+	        }
+	    }, {
+	        key: 'colorChange',
+	        value: function colorChange(color) {
+	            if (color === 'white') {
+	                return 'blue';
+	            } else {
+	                return 'white';
+	            }
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this2 = this;
+	            var _this3 = this;
 
 	            var whiteKeys = this.keys.map(function (letter, i) {
-	                return _react2.default.createElement(_whiteKey2.default, { colorChange: _this2.colorChange.bind(_this2), letter: letter, key: i });
+	                return _react2.default.createElement(_whiteKey2.default, { colorChangeCycle: _this3.colorChangeCycle.bind(_this3), BGC: _this3.state[letter], addToSequence: _this3.addToSequence.bind(_this3), letter: letter, key: i });
 	            });
 	            return _react2.default.createElement(
 	                'div',
@@ -27132,6 +27182,7 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        null,
+	                        'Keys Pressed: ',
 	                        this.state.sequence
 	                    ),
 	                    _react2.default.createElement(
@@ -27139,10 +27190,10 @@
 	                        null,
 	                        _react2.default.createElement(
 	                            'button',
-	                            { className: 'btn btn-primary' },
+	                            { onClick: this.handleSequence.bind(this), className: 'btn btn-primary' },
 	                            'Play a necktie sequence'
 	                        ),
-	                        _react2.default.createElement('input', { onChange: this.handleChangeText, placeholder: 'input string' })
+	                        _react2.default.createElement('input', { onChange: this.handleChangeText.bind(this), placeholder: 'input string' })
 	                    )
 	                )
 	            );
@@ -27259,7 +27310,6 @@
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(WhiteKey).call(this, props));
 
 	        _this.props = props;
-	        _this.changeClicked = _this.changeClicked.bind(_this);
 	        _this.state = {
 	            clicked: false
 	        };
@@ -27269,25 +27319,15 @@
 	    _createClass(WhiteKey, [{
 	        key: 'handleClick',
 	        value: function handleClick() {
-	            this.changeClicked();
-	            this.props.colorChange(this.props.letter);
-	            setTimeout(this.changeClicked, 1000);
-	        }
-	    }, {
-	        key: 'changeClicked',
-	        value: function changeClicked() {
-	            if (this.state.clicked) {
-	                this.setState({ clicked: false });
-	            } else {
-	                this.setState({ clicked: true });
-	            }
+	            this.props.addToSequence(this.props.letter);
+	            this.props.colorChangeCycle(this.props.letter);
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                { onClick: this.handleClick.bind(this), className: 'keyboard', style: { backgroundColor: this.state.clicked ? 'blue' : 'white', bottom: '0px' } },
+	                { onClick: this.handleClick.bind(this), className: 'keyboard', style: { backgroundColor: this.props.BGC } },
 	                this.props.letter
 	            );
 	        }
