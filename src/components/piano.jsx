@@ -8,13 +8,13 @@ export default class Piano extends Component {
         this.state = {
             sequence: [],
             text: '',
-            'C': this.props.color,
-            'D': this.props.color,
-            'E': this.props.color,
-            'F': this.props.color,
-            'G': this.props.color,
-            'A': this.props.color,
-            'B': this.props.color
+            'C': 'white',
+            'D': 'white',
+            'E': 'white',
+            'F': 'white',
+            'G': 'white',
+            'A': 'white',
+            'B': 'white'
         };
     }
 
@@ -97,7 +97,7 @@ export default class Piano extends Component {
                 <div>
                     <div>Keys Pressed: {this.state.sequence}</div>
                     <form>
-                        <button onClick={this.handleSequence.bind(this)} className='btn btn-primary'>Play a necktie sequence</button>
+                        <button onClick={this.handleSequence.bind(this)} className='btn btn-danger'>Play a necktie sequence</button>
                         <input onChange={this.handleChangeText.bind(this)} placeholder='input string'></input>
                     </form>
                 </div>

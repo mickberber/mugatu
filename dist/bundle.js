@@ -26929,7 +26929,7 @@
 	        'div',
 	        null,
 	        _react2.default.createElement(_nav2.default, { addPiano: this.addPiano.bind(this), removePiano: this.removePiano.bind(this) }),
-	        _react2.default.createElement(_piano2.default, { color: 'white' }),
+	        _react2.default.createElement(_piano2.default, null),
 	        _react2.default.createElement(
 	          'div',
 	          { style: { display: 'inline' } },
@@ -27002,7 +27002,7 @@
 	                { to: '/' },
 	                _react2.default.createElement(
 	                  'button',
-	                  { className: 'btn btn-warning' },
+	                  { className: 'btn btn-danger' },
 	                  'Home'
 	                )
 	              )
@@ -27011,8 +27011,58 @@
 	              'ul',
 	              { className: 'nav navbar-right' },
 	              _react2.default.createElement(
+	                'div',
+	                { className: 'btn-group' },
+	                _react2.default.createElement(
+	                  'button',
+	                  { type: 'button', className: 'btn btn-danger' },
+	                  'pick-a-piano'
+	                ),
+	                _react2.default.createElement(
+	                  'button',
+	                  { type: 'button', className: 'btn btn-danger dropdown-toggle', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
+	                  _react2.default.createElement('span', { className: 'caret' }),
+	                  _react2.default.createElement(
+	                    'span',
+	                    { className: 'sr-only' },
+	                    'Toggle Dropdown'
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'ul',
+	                  { className: 'dropdown-menu' },
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'Action'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'Another action'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'Something else here'
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
 	                'button',
-	                { onClick: this.props.addPiano, className: 'btn btn-success' },
+	                { onClick: this.props.addPiano, className: 'btn btn-danger' },
 	                'Add Piano'
 	              ),
 	              _react2.default.createElement(
@@ -27072,13 +27122,13 @@
 	        _this.state = {
 	            sequence: [],
 	            text: '',
-	            'C': _this.props.color,
-	            'D': _this.props.color,
-	            'E': _this.props.color,
-	            'F': _this.props.color,
-	            'G': _this.props.color,
-	            'A': _this.props.color,
-	            'B': _this.props.color
+	            'C': 'white',
+	            'D': 'white',
+	            'E': 'white',
+	            'F': 'white',
+	            'G': 'white',
+	            'A': 'white',
+	            'B': 'white'
 	        };
 	        return _this;
 	    }
@@ -27192,7 +27242,7 @@
 	                        null,
 	                        _react2.default.createElement(
 	                            'button',
-	                            { onClick: this.handleSequence.bind(this), className: 'btn btn-primary' },
+	                            { onClick: this.handleSequence.bind(this), className: 'btn btn-danger' },
 	                            'Play a necktie sequence'
 	                        ),
 	                        _react2.default.createElement('input', { onChange: this.handleChangeText.bind(this), placeholder: 'input string' })
