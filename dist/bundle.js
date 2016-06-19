@@ -26983,6 +26983,11 @@
 	  }
 
 	  _createClass(Nav, [{
+	    key: 'audioTest',
+	    value: function audioTest(mp3) {
+	      new Audio(mp3).play();
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -27119,6 +27124,7 @@
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Piano).call(this, props));
 
 	        _this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+	        _this.audio = ['./../assets/sounds/C.wav', './../assets/sounds/D.wav', './../assets/sounds/E.wav', './../assets/sounds/F.wav', './../assets/sounds/G.wav', './../assets/sounds/A.wav', './../assets/sounds/B.wav'];
 	        _this.state = {
 	            sequence: [],
 	            text: '',
@@ -27198,7 +27204,7 @@
 	            var _this3 = this;
 
 	            var whiteKeys = this.keys.map(function (letter, i) {
-	                return _react2.default.createElement(_whiteKey2.default, { colorChangeCycle: _this3.colorChangeCycle.bind(_this3), BGC: _this3.state[letter], addToSequence: _this3.addToSequence.bind(_this3), letter: letter, key: i });
+	                return _react2.default.createElement(_whiteKey2.default, { colorChangeCycle: _this3.colorChangeCycle.bind(_this3), BGC: _this3.state[letter], addToSequence: _this3.addToSequence.bind(_this3), letter: letter, key: i, audio: _this3.audio[i] });
 	            });
 	            return _react2.default.createElement(
 	                'div',
@@ -27375,6 +27381,12 @@
 	        value: function handleClick() {
 	            this.props.addToSequence(this.props.letter);
 	            this.props.colorChangeCycle(this.props.letter);
+	            this.playAudio(this.props.audio);
+	        }
+	    }, {
+	        key: 'playAudio',
+	        value: function playAudio(mp3) {
+	            new Audio(mp3).play();
 	        }
 	    }, {
 	        key: 'render',

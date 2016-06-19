@@ -5,6 +5,15 @@ export default class Piano extends Component {
     constructor(props){
         super(props);
         this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+        this.audio = [
+            './../assets/sounds/C.wav',
+            './../assets/sounds/D.wav',
+            './../assets/sounds/E.wav',
+            './../assets/sounds/F.wav',
+            './../assets/sounds/G.wav',
+            './../assets/sounds/A.wav',
+            './../assets/sounds/B.wav'
+        ];
         this.state = {
             sequence: [],
             text: '',
@@ -74,7 +83,7 @@ export default class Piano extends Component {
 
     render() {
         let whiteKeys = this.keys.map((letter, i) => { 
-            return <WhiteKey colorChangeCycle={this.colorChangeCycle.bind(this)} BGC={this.state[letter]} addToSequence={this.addToSequence.bind(this)} letter={letter} key={i}/> });
+            return <WhiteKey colorChangeCycle={this.colorChangeCycle.bind(this)} BGC={this.state[letter]} addToSequence={this.addToSequence.bind(this)} letter={letter} key={i} audio={this.audio[i]}/> });
         return (
             <div>
                 <div className="piano">

@@ -12,6 +12,11 @@ export default class WhiteKey extends Component {
     handleClick() {
         this.props.addToSequence(this.props.letter);
         this.props.colorChangeCycle(this.props.letter);
+        this.playAudio(this.props.audio);
+    }
+
+    playAudio(mp3) {
+        new Audio(mp3).play();
     }
 
     render() { 
