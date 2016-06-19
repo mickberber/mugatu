@@ -27,10 +27,12 @@ export default class Piano extends Component {
             'A': 'white',
             'B': 'white'
         };
+
         this.handleSequence = this.handleSequence.bind(this);
         this.handleChangeText = this.handleChangeText.bind(this);
         this.colorChangeCycle = this.colorChangeCycle.bind(this);
         this.addToSequence = this.addToSequence.bind(this);
+        this.playAudio = this.playAudio.bind(this);
     }
 
     /* USER INPUT WORKERS */
@@ -56,6 +58,8 @@ export default class Piano extends Component {
         function createVisibleSync() {
             // runs subsequent calls, returns out of recursion if index has increased past last index in sequence
             this.colorChangeCycle(userInput[index].toUpperCase());
+            let mp3 = './../assets/sounds/' + userInput[index].toUpperCase() + '.wav';
+            this.playAudio(mp3);
             index++;
             if(index >= userInput.length) {
                 return;
@@ -65,6 +69,8 @@ export default class Piano extends Component {
         }
         //run call on first item in sequence
         this.colorChangeCycle(userInput[index].toUpperCase());
+        let mp3 = './../assets/sounds/' + userInput[index].toUpperCase() + '.wav';
+        this.playAudio(mp3);
         index++;
         //delays subsequent calls
         setTimeout(createVisibleSync.bind(this), 1000);
@@ -80,6 +86,7 @@ export default class Piano extends Component {
         //setTimeout to revert to original color
         setTimeout(
             () => { 
+                //colorChange needs 'this' to be bound here in the iffe
                 let color = (this.colorChange.bind(this, this.state[letter]))();
                 newState[letter] = color;
                 this.setState(newState);
@@ -93,6 +100,11 @@ export default class Piano extends Component {
         } else {
             return 'white';
         }
+    }
+
+    /* Sound Helper */
+    playAudio(mp3) {
+        new Audio(mp3).play();
     }
 
     render() {

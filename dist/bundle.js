@@ -25535,10 +25535,12 @@
 	            'A': 'white',
 	            'B': 'white'
 	        };
+
 	        _this.handleSequence = _this.handleSequence.bind(_this);
 	        _this.handleChangeText = _this.handleChangeText.bind(_this);
 	        _this.colorChangeCycle = _this.colorChangeCycle.bind(_this);
 	        _this.addToSequence = _this.addToSequence.bind(_this);
+	        _this.playAudio = _this.playAudio.bind(_this);
 	        return _this;
 	    }
 
@@ -25569,6 +25571,8 @@
 	            function createVisibleSync() {
 	                // runs subsequent calls, returns out of recursion if index has increased past last index in sequence
 	                this.colorChangeCycle(userInput[index].toUpperCase());
+	                var mp3 = './../assets/sounds/' + userInput[index].toUpperCase() + '.wav';
+	                this.playAudio(mp3);
 	                index++;
 	                if (index >= userInput.length) {
 	                    return;
@@ -25578,6 +25582,8 @@
 	            }
 	            //run call on first item in sequence
 	            this.colorChangeCycle(userInput[index].toUpperCase());
+	            var mp3 = './../assets/sounds/' + userInput[index].toUpperCase() + '.wav';
+	            this.playAudio(mp3);
 	            index++;
 	            //delays subsequent calls
 	            setTimeout(createVisibleSync.bind(this), 1000);
@@ -25596,6 +25602,7 @@
 	            this.setState(newState);
 	            //setTimeout to revert to original color
 	            setTimeout(function () {
+	                //colorChange needs 'this' to be bound here in the iffe
 	                var color = _this2.colorChange.bind(_this2, _this2.state[letter])();
 	                newState[letter] = color;
 	                _this2.setState(newState);
@@ -25609,6 +25616,14 @@
 	            } else {
 	                return 'white';
 	            }
+	        }
+
+	        /* Sound Helper */
+
+	    }, {
+	        key: 'playAudio',
+	        value: function playAudio(mp3) {
+	            new Audio(mp3).play();
 	        }
 	    }, {
 	        key: 'render',
