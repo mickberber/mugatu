@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
+/* Simple NavBar page */
+
 export default class Nav extends Component {
   constructor(props) {
     super(props);

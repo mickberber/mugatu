@@ -25289,6 +25289,8 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/* Renders each Piano within the application */
+
 	var App = function (_Component) {
 	  _inherits(App, _Component);
 
@@ -25302,6 +25304,9 @@
 	      img: './../assets/pknecktie5.png',
 	      type: 'NECKTIE'
 	    };
+	    _this.addPiano = _this.addPiano.bind(_this);
+	    _this.removePiano = _this.removePiano.bind(_this);
+	    _this.chooseType = _this.chooseType.bind(_this);
 	    return _this;
 	  }
 
@@ -25332,7 +25337,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_nav2.default, { addPiano: this.addPiano.bind(this), removePiano: this.removePiano.bind(this), chooseType: this.chooseType.bind(this) }),
+	        _react2.default.createElement(_nav2.default, { addPiano: this.addPiano, removePiano: this.removePiano, chooseType: this.chooseType }),
 	        _react2.default.createElement(_piano2.default, { img: './../assets/pknecktie5.png', pianoType: this.state.type }),
 	        _react2.default.createElement(
 	          'div',
@@ -25373,6 +25378,8 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/* Simple NavBar page */
 
 	var Nav = function (_Component) {
 	  _inherits(Nav, _Component);
@@ -25528,8 +25535,14 @@
 	            'A': 'white',
 	            'B': 'white'
 	        };
+	        _this.handleSequence = _this.handleSequence.bind(_this);
+	        _this.handleChangeText = _this.handleChangeText.bind(_this);
+	        _this.colorChangeCycle = _this.colorChangeCycle.bind(_this);
+	        _this.addToSequence = _this.addToSequence.bind(_this);
 	        return _this;
 	    }
+
+	    /* USER INPUT WORKERS */
 
 	    _createClass(Piano, [{
 	        key: 'addToSequence',
@@ -25544,6 +25557,7 @@
 	    }, {
 	        key: 'handleSequence',
 	        value: function handleSequence() {
+	            //Break out of sequence handling if userInput is formatted incorrectly
 	            if (!(0, _verify2.default)(this.state.text)) {
 	                return;
 	            }
@@ -25568,6 +25582,9 @@
 	            //delays subsequent calls
 	            setTimeout(createVisibleSync.bind(this), 1000);
 	        }
+
+	        /* COLOR CHANGE WORKERS */
+
 	    }, {
 	        key: 'colorChangeCycle',
 	        value: function colorChangeCycle(letter) {
@@ -25599,7 +25616,7 @@
 	            var _this3 = this;
 
 	            var whiteKeys = this.keys.map(function (letter, i) {
-	                return _react2.default.createElement(_whiteKey2.default, { colorChangeCycle: _this3.colorChangeCycle.bind(_this3), BGC: _this3.state[letter], addToSequence: _this3.addToSequence.bind(_this3), letter: letter, key: i, audio: _this3.audio[i] });
+	                return _react2.default.createElement(_whiteKey2.default, { colorChangeCycle: _this3.colorChangeCycle, BGC: _this3.state[letter], addToSequence: _this3.addToSequence, letter: letter, key: i, audio: _this3.audio[i] });
 	            });
 	            return _react2.default.createElement(
 	                'div',
@@ -25648,10 +25665,10 @@
 	                        { className: 'form-group' },
 	                        _react2.default.createElement(
 	                            'button',
-	                            { onClick: this.handleSequence.bind(this), className: 'btn btn-warning' },
+	                            { onClick: this.handleSequence, className: 'btn btn-warning' },
 	                            'Play a necktie sequence'
 	                        ),
-	                        _react2.default.createElement('input', { onChange: this.handleChangeText.bind(this), className: 'form-control', placeholder: 'input string' })
+	                        _react2.default.createElement('input', { onChange: this.handleChangeText, className: 'form-control', placeholder: 'input string' })
 	                    )
 	                )
 	            );
@@ -25687,6 +25704,8 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/* Renders White Piano Keys */
+
 	var WhiteKey = function (_Component) {
 	    _inherits(WhiteKey, _Component);
 
@@ -25702,8 +25721,11 @@
 	    _createClass(WhiteKey, [{
 	        key: 'handleClick',
 	        value: function handleClick() {
+	            //handles user input
 	            this.props.addToSequence(this.props.letter);
+	            //change piano key colors
 	            this.props.colorChangeCycle(this.props.letter);
+	            //play note
 	            this.playAudio(this.props.audio);
 	        }
 	    }, {
@@ -25738,22 +25760,27 @@
 	});
 	exports.default = verify;
 
+	/* Verify User Input Formatting */
 
 	function verify(string) {
+	    //check type
 	    if (typeof string !== 'string') {
 	        return false;
 	    }
 	    for (var i = 0; i < string.length; i++) {
+	        //check index 1 for comma
 	        if (i === 1 && string[i] !== ',') {
 	            alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
 	            return false;
 	        }
+	        //check odd indexes for commas
 	        if (i % 2 !== 0) {
 	            if (string[i] !== ',') {
 	                alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
 	                return false;
 	            }
 	        } else {
+	            //check even indexes for valid keys
 	            if (!checkAgainstKeys(string[i])) {
 	                alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
 	                return false;
@@ -25763,6 +25790,7 @@
 	    return true;
 	}
 
+	//verify letters are keys on the piano
 	function checkAgainstKeys(val) {
 	    val = val.toUpperCase();
 	    var keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
@@ -25803,6 +25831,8 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/* Simple Splash page */
 
 	var Splash = function (_Component) {
 	    _inherits(Splash, _Component);

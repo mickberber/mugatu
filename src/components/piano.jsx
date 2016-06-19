@@ -27,7 +27,13 @@ export default class Piano extends Component {
             'A': 'white',
             'B': 'white'
         };
+        this.handleSequence = this.handleSequence.bind(this);
+        this.handleChangeText = this.handleChangeText.bind(this);
+        this.colorChangeCycle = this.colorChangeCycle.bind(this);
+        this.addToSequence = this.addToSequence.bind(this);
     }
+
+    /* USER INPUT WORKERS */
 
     addToSequence(val) {
         this.setState({sequence: this.state.sequence + val});
@@ -38,6 +44,7 @@ export default class Piano extends Component {
     }
 
     handleSequence() {
+        //Break out of sequence handling if userInput is formatted incorrectly
         if(!verify(this.state.text)) {
             return;
         }
@@ -62,6 +69,8 @@ export default class Piano extends Component {
         //delays subsequent calls
         setTimeout(createVisibleSync.bind(this), 1000);
     }
+
+    /* COLOR CHANGE WORKERS */
 
     colorChangeCycle(letter) {
         //create new object to reset state with dynamic key value
@@ -88,7 +97,7 @@ export default class Piano extends Component {
 
     render() {
         let whiteKeys = this.keys.map((letter, i) => { 
-            return <WhiteKey colorChangeCycle={this.colorChangeCycle.bind(this)} BGC={this.state[letter]} addToSequence={this.addToSequence.bind(this)} letter={letter} key={i} audio={this.audio[i]}/> });
+            return <WhiteKey colorChangeCycle={this.colorChangeCycle} BGC={this.state[letter]} addToSequence={this.addToSequence} letter={letter} key={i} audio={this.audio[i]}/> });
         return (
             <div>
                 <div>{this.props.pianoType}</div>
@@ -112,8 +121,8 @@ export default class Piano extends Component {
                 <div>
                     <div>Keys Pressed: {this.state.sequence}</div>
                     <fieldset className='form-group'>
-                        <button onClick={this.handleSequence.bind(this)} className='btn btn-warning'>Play a necktie sequence</button>
-                        <input onChange={this.handleChangeText.bind(this)} className='form-control' placeholder='input string'></input>
+                        <button onClick={this.handleSequence} className='btn btn-warning'>Play a necktie sequence</button>
+                        <input onChange={this.handleChangeText} className='form-control' placeholder='input string'></input>
                     </fieldset>
                 </div>
             </div>
