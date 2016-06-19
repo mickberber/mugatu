@@ -27151,9 +27151,7 @@
 	    }, {
 	        key: 'handleSequence',
 	        value: function handleSequence() {
-	            if (!(0, _verify2.default)(this.state.text)) {
-	                return;
-	            }
+	            (0, _verify2.default)(this.state.text);
 	            //runs on user inputted string
 	            var userInput = this.state.text.split(',');
 	            //use index as flag for recursion
@@ -27432,6 +27430,7 @@
 	            }
 	        }
 	    }
+	    return true;
 	}
 
 	function checkAgainstKeys(val) {

@@ -38,9 +38,7 @@ export default class Piano extends Component {
     }
 
     handleSequence() {
-        if(!verify(this.state.text)) {
-            return;
-        }
+        verify(this.state.text)
         //runs on user inputted string
         let userInput = this.state.text.split(',');
         //use index as flag for recursion

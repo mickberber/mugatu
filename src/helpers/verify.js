@@ -17,6 +17,7 @@ function verify(string) {
             }
         }
     }
+    return true;
 }
 
 function checkAgainstKeys(val) {
