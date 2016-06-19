@@ -27096,27 +27096,38 @@
 	    }, {
 	        key: 'handleSequence',
 	        value: function handleSequence() {
-	            var _this2 = this;
-
 	            //run on user input
 	            var userInput = this.state.text.split(',');
-	            userInput.forEach(function (letter) {
-	                _this2.colorChangeCycle(letter.toUpperCase());
-	            });
+	            var index = 0;
+	            // userInput.forEach((letter, i) => {
+	            //     this.colorChangeCycle(letter.toUpperCase());
+	            // });
+	            function run() {
+	                this.colorChangeCycle(userInput[index].toUpperCase());
+	                index++;
+	                if (index >= userInput.length) {
+	                    return;
+	                } else {
+	                    setTimeout(run.bind(this), 1000);
+	                }
+	            }
+	            this.colorChangeCycle(userInput[index].toUpperCase());
+	            index++;
+	            setTimeout(run.bind(this), 1000);
 	        }
 	    }, {
 	        key: 'colorChangeCycle',
 	        value: function colorChangeCycle(letter) {
-	            var _this3 = this;
+	            var _this2 = this;
 
 	            //used to change colors
 	            var newState = {};
 	            newState[letter] = this.colorChange(this.state[letter]);
 	            this.setState(newState);
 	            setTimeout(function () {
-	                var color = _this3.colorChange.bind(_this3, _this3.state[letter])();
+	                var color = _this2.colorChange.bind(_this2, _this2.state[letter])();
 	                newState[letter] = color;
-	                _this3.setState(newState);
+	                _this2.setState(newState);
 	            }, 1000);
 	        }
 	    }, {
@@ -27131,10 +27142,10 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this4 = this;
+	            var _this3 = this;
 
 	            var whiteKeys = this.keys.map(function (letter, i) {
-	                return _react2.default.createElement(_whiteKey2.default, { colorChangeCycle: _this4.colorChangeCycle.bind(_this4), BGC: _this4.state[letter], addToSequence: _this4.addToSequence.bind(_this4), letter: letter, key: i });
+	                return _react2.default.createElement(_whiteKey2.default, { colorChangeCycle: _this3.colorChangeCycle.bind(_this3), BGC: _this3.state[letter], addToSequence: _this3.addToSequence.bind(_this3), letter: letter, key: i });
 	            });
 	            return _react2.default.createElement(
 	                'div',

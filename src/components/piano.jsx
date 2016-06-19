@@ -29,9 +29,22 @@ export default class Piano extends Component {
     handleSequence() {
         //run on user input
         let userInput = this.state.text.split(',');
-        userInput.forEach((letter) => {
-            this.colorChangeCycle(letter.toUpperCase());
-        });
+        let index = 0;
+        // userInput.forEach((letter, i) => {
+        //     this.colorChangeCycle(letter.toUpperCase());
+        // });
+        function run() {
+            this.colorChangeCycle(userInput[index].toUpperCase());
+            index++;
+            if(index >= userInput.length) {
+                return;
+            } else {
+                setTimeout(run.bind(this), 1000);
+            }
+        }
+        this.colorChangeCycle(userInput[index].toUpperCase());
+        index++;
+        setTimeout(run.bind(this), 1000);
     }
 
     colorChangeCycle(letter) {
