@@ -7,23 +7,55 @@ export default class Piano extends Component {
         this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
         this.state = {
             sequence: [],
-            text: ''
-        }
+            text: '',
+            'C': 'white',
+            'D': 'white',
+            'E': 'white',
+            'F': 'white',
+            'G': 'white',
+            'A': 'white',
+            'B': 'white'
+        };
     }
 
-    colorChange(val) {
-        console.log(this.state.sequence);
-        this.state.sequence.push(val);
-        this.setState({sequence: this.state.sequence});
+    addToSequence(val) {
+        this.setState({sequence: this.state.sequence + val});
     }
 
     handleChangeText(event) {
-        console.log(event.target.value);
-        //this.setState({text: event.target.value});
+        this.setState({text: event.target.value});
+    }
+
+    handleSequence() {
+        //run on user input
+        let userInput = this.state.text.split(',');
+        userInput.forEach((letter) => { console.log(letter) });
+    }
+
+    colorChangeCycle(letter) {
+        //used to change colors
+        let newState = {};
+        newState[letter] = this.colorChange(this.state[letter]);
+        this.setState(newState);
+        setTimeout(() => { 
+            let color = (this.colorChange.bind(this, this.state[letter]))();
+            newState[letter] = color;
+            console.log(newState)
+            this.setState(newState);
+         }, 1000);
+    }
+
+    colorChange(color) {
+        if(color === 'white') {
+            return 'blue';
+        } else {
+            return 'white';
+        }
     }
 
     render() {
-        let whiteKeys = this.keys.map((letter, i) => { return <WhiteKey colorChange={this.colorChange.bind(this)} letter={letter} key={i}/> })
+        let whiteKeys = this.keys.map((letter, i) => { 
+            return <WhiteKey colorChangeCycle={this.colorChangeCycle.bind(this)} BGC={this.state[letter]} addToSequence={this.addToSequence.bind(this)} letter={letter} key={i}/> })
         return (
             <div>
                 <div className="piano">
@@ -45,10 +77,10 @@ export default class Piano extends Component {
                     <br />
                 </div>
                 <div>
-                    <div>{this.state.sequence}</div>
+                    <div>Keys Pressed: {this.state.sequence}</div>
                     <form>
-                        <button className='btn btn-primary'>Play a necktie sequence</button>
-                        <input onChange={this.handleChangeText} placeholder='input string'></input>
+                        <button onClick={this.handleSequence.bind(this)} className='btn btn-primary'>Play a necktie sequence</button>
+                        <input onChange={this.handleChangeText.bind(this)} placeholder='input string'></input>
                     </form>
                 </div>
             </div>
