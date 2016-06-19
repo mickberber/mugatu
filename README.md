@@ -14,3 +14,14 @@ Input passed to each piano's input field, must be in the format similar too:
 'a,b,c' OR 'A,B,C'
 
 If an incorrect letter is passed(i.e. one that isn't a chord) or formatting is incorrect, an alert will be dispatched.
+
+
+TO START:
+
+`$ git clone https://github.com/mickberber/mugatu.git`
+`$ cd mugatu`
+`$ npm install`
+`$ webpack`
+`$ node server.js`
+
+Assets will be served at localhost:8080
