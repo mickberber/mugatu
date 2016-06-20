@@ -31,6 +31,9 @@ export default class App extends Component {
   }
 
   removePiano() {
+    if(this.state.pianos.length === 0) {
+      alert('No pianos to remove!');
+    }
     //using a pianos variable, as to not mutate state
     let pianos = this.state.pianos;
     pianos.pop();
