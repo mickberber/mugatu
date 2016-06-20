@@ -13,7 +13,6 @@ export default class App extends Component {
     this.necktieAudio = audio.necktieAudio;
     this.sillyAudio = audio.sillyAudio;
     this.pianoAudio = audio.pianoAudio;
-    
 
     this.state = {
       pianos: [],

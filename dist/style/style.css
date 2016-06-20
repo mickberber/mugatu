@@ -1,3 +1,5 @@
+/* KEY BOARD STYLING */
+
 .piano {
     position:relative;
 	width: 1030px;
@@ -40,12 +42,9 @@
     background-color: #000;
 }
 
-.content {
-	bottom: 0px;
-}
+/* NAVR BAR STYLE */
 
 .navbar {
-    background-color: #76EE00;
-    border-width: 1px;
-    border-color: black;
+    background-color: transparent;
+    border-width: 0px;
 }
