@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-
-/* Renders White Piano Keys */
+/* White Piano Keys */
 
 export default class WhiteKey extends Component {
     constructor(props) {
