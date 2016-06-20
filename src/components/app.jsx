@@ -41,7 +41,7 @@ export default class App extends Component {
       pianos: [],
       img: './../assets/pknecktie5.png',
       type: 'NECKTIE',
-      audio: this.audio1
+      audio: this.necktieAudio
     };
 
     this.addPiano = this.addPiano.bind(this);
@@ -64,13 +64,14 @@ export default class App extends Component {
   }
 
   chooseType(newType, newImg) {
-      if(newType === 'MUGATUS_SILLY_MODE') {
-        this.setState({type: newType, img: newImg, audio: this.sillyAudio});
-      } else if(newType === 'PIANO') {
-        this.setState({type: newType, img: newImg, audio: this.pianoAudio});
-      } else {
-        this.setState({type: newType, img: newImg, audio: this.necktieAudio});
-      }
+    //set new types' properties before creating a new   
+    if(newType === 'MUGATUS_SILLY_MODE') {
+      this.setState({type: newType, img: newImg, audio: this.sillyAudio});
+    } else if(newType === 'PIANO') {
+      this.setState({type: newType, img: newImg, audio: this.pianoAudio});
+    } else {
+      this.setState({type: newType, img: newImg, audio: this.necktieAudio});
+    }
   }
 
   render() {

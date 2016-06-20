@@ -25307,7 +25307,7 @@
 	      pianos: [],
 	      img: './../assets/pknecktie5.png',
 	      type: 'NECKTIE',
-	      audio: _this.audio1
+	      audio: _this.necktieAudio
 	    };
 
 	    _this.addPiano = _this.addPiano.bind(_this);
@@ -25335,6 +25335,7 @@
 	  }, {
 	    key: 'chooseType',
 	    value: function chooseType(newType, newImg) {
+	      //set new types' properties before creating a new  
 	      if (newType === 'MUGATUS_SILLY_MODE') {
 	        this.setState({ type: newType, img: newImg, audio: this.sillyAudio });
 	      } else if (newType === 'PIANO') {
