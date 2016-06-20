@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import WhiteKey from './whiteKey';
-import verify from './../helpers/verify.js';
+import verify from './../../helpers/verify.js';
 
 /* Piano Component */
 

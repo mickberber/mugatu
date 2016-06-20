@@ -25277,7 +25277,7 @@
 
 	var _nav2 = _interopRequireDefault(_nav);
 
-	var _piano = __webpack_require__(248);
+	var _piano = __webpack_require__(252);
 
 	var _piano2 = _interopRequireDefault(_piano);
 
@@ -25507,7 +25507,109 @@
 	exports.default = Nav;
 
 /***/ },
-/* 248 */
+/* 248 */,
+/* 249 */,
+/* 250 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = verify;
+
+	/* Verify User Input Formatting */
+
+	function verify(string) {
+	    //check type
+	    if (typeof string !== 'string') {
+	        return false;
+	    }
+	    for (var i = 0; i < string.length; i++) {
+	        //check index 1 for comma
+	        if (i === 1 && string[i] !== ',') {
+	            alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
+	            return false;
+	        }
+	        //check odd indexes for commas
+	        if (i % 2 !== 0) {
+	            if (string[i] !== ',') {
+	                alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
+	                return false;
+	            }
+	        } else {
+	            //check even indexes for valid keys
+	            if (!checkAgainstKeys(string[i])) {
+	                alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
+	                return false;
+	            }
+	        }
+	    }
+	    return true;
+	}
+
+	//verify letters are keys on the piano
+	function checkAgainstKeys(val) {
+	    val = val.toUpperCase();
+	    var keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+	    for (var i = 0; i < keys.length; i++) {
+	        if (val === keys[i]) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+
+/***/ },
+/* 251 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = Splash;
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(186);
+
+	var _nav = __webpack_require__(247);
+
+	var _nav2 = _interopRequireDefault(_nav);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/* Simple Splash page */
+
+	function Splash() {
+	    return _react2.default.createElement(
+	        'div',
+	        { className: 'container-fluid' },
+	        _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement('div', { className: 'col-xs-2' }),
+	            _react2.default.createElement(
+	                'div',
+	                { className: 'col-xs-8' },
+	                _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { to: '/app' },
+	                    _react2.default.createElement('img', { src: './../assets/pap.png', style: { height: '400px', width: '800px' } })
+	                )
+	            ),
+	            _react2.default.createElement('div', { className: 'col-xs-2' })
+	        )
+	    );
+	}
+
+/***/ },
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25522,7 +25624,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _whiteKey = __webpack_require__(249);
+	var _whiteKey = __webpack_require__(253);
 
 	var _whiteKey2 = _interopRequireDefault(_whiteKey);
 
@@ -25724,7 +25826,7 @@
 	exports.default = Piano;
 
 /***/ },
-/* 249 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25786,106 +25888,6 @@
 	}(_react.Component);
 
 	exports.default = WhiteKey;
-
-/***/ },
-/* 250 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.default = verify;
-
-	/* Verify User Input Formatting */
-
-	function verify(string) {
-	    //check type
-	    if (typeof string !== 'string') {
-	        return false;
-	    }
-	    for (var i = 0; i < string.length; i++) {
-	        //check index 1 for comma
-	        if (i === 1 && string[i] !== ',') {
-	            alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
-	            return false;
-	        }
-	        //check odd indexes for commas
-	        if (i % 2 !== 0) {
-	            if (string[i] !== ',') {
-	                alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
-	                return false;
-	            }
-	        } else {
-	            //check even indexes for valid keys
-	            if (!checkAgainstKeys(string[i])) {
-	                alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
-	                return false;
-	            }
-	        }
-	    }
-	    return true;
-	}
-
-	//verify letters are keys on the piano
-	function checkAgainstKeys(val) {
-	    val = val.toUpperCase();
-	    var keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
-	    for (var i = 0; i < keys.length; i++) {
-	        if (val === keys[i]) {
-	            return true;
-	        }
-	    }
-	    return false;
-	}
-
-/***/ },
-/* 251 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.default = Splash;
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(186);
-
-	var _nav = __webpack_require__(247);
-
-	var _nav2 = _interopRequireDefault(_nav);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/* Simple Splash page */
-
-	function Splash() {
-	    return _react2.default.createElement(
-	        'div',
-	        { className: 'container-fluid' },
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'row' },
-	            _react2.default.createElement('div', { className: 'col-xs-2' }),
-	            _react2.default.createElement(
-	                'div',
-	                { className: 'col-xs-8' },
-	                _react2.default.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/app' },
-	                    _react2.default.createElement('img', { src: './../assets/pap.png', style: { height: '400px', width: '800px' } })
-	                )
-	            ),
-	            _react2.default.createElement('div', { className: 'col-xs-2' })
-	        )
-	    );
-	}
 
 /***/ }
 /******/ ]);
