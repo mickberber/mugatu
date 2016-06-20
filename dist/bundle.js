@@ -25281,6 +25281,10 @@
 
 	var _piano2 = _interopRequireDefault(_piano);
 
+	var _audio = __webpack_require__(258);
+
+	var _audio2 = _interopRequireDefault(_audio);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -25299,9 +25303,9 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 
-	    _this.necktieAudio = ['./../assets/sounds/NECKTIE/C.wav', './../assets/sounds/NECKTIE/D.wav', './../assets/sounds/NECKTIE/E.wav', './../assets/sounds/NECKTIE/F.wav', './../assets/sounds/NECKTIE/G.wav', './../assets/sounds/NECKTIE/A.wav', './../assets/sounds/NECKTIE/B.wav'];
-	    _this.sillyAudio = ['./../assets/sounds/MUGATUS_SILLY_MODE/C.wav', './../assets/sounds/MUGATUS_SILLY_MODE/D.wav', './../assets/sounds/MUGATUS_SILLY_MODE/E.wav', './../assets/sounds/MUGATUS_SILLY_MODE/F.wav', './../assets/sounds/MUGATUS_SILLY_MODE/G.wav', './../assets/sounds/MUGATUS_SILLY_MODE/A.wav', './../assets/sounds/MUGATUS_SILLY_MODE/B.wav'];
-	    _this.pianoAudio = ['./../assets/sounds/PIANO/C.wav', './../assets/sounds/PIANO/D.wav', './../assets/sounds/PIANO/E.wav', './../assets/sounds/PIANO/F.wav', './../assets/sounds/PIANO/G.wav', './../assets/sounds/PIANO/A.wav', './../assets/sounds/PIANO/B.wav'];
+	    _this.necktieAudio = _audio2.default.necktieAudio;
+	    _this.sillyAudio = _audio2.default.sillyAudio;
+	    _this.pianoAudio = _audio2.default.pianoAudio;
 
 	    _this.state = {
 	      pianos: [],
@@ -25723,7 +25727,7 @@
 	    _createClass(WhiteKey, [{
 	        key: 'handleClick',
 	        value: function handleClick() {
-	            //handles user input
+	            //handle user input
 	            this.props.addToSequence(this.props.letter);
 	            //change piano key colors
 	            this.props.colorChangeCycle(this.props.letter);
@@ -25959,6 +25963,8 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/* Renders Buttons that only utilize text */
+
 	var Button = function (_Component) {
 	    _inherits(Button, _Component);
 
@@ -25986,6 +25992,25 @@
 	}(_react.Component);
 
 	exports.default = Button;
+
+/***/ },
+/* 258 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	        value: true
+	});
+	var audio = {};
+
+	audio.necktieAudio = ['./../assets/sounds/NECKTIE/C.wav', './../assets/sounds/NECKTIE/D.wav', './../assets/sounds/NECKTIE/E.wav', './../assets/sounds/NECKTIE/F.wav', './../assets/sounds/NECKTIE/G.wav', './../assets/sounds/NECKTIE/A.wav', './../assets/sounds/NECKTIE/B.wav'];
+
+	audio.sillyAudio = ['./../assets/sounds/MUGATUS_SILLY_MODE/C.wav', './../assets/sounds/MUGATUS_SILLY_MODE/D.wav', './../assets/sounds/MUGATUS_SILLY_MODE/E.wav', './../assets/sounds/MUGATUS_SILLY_MODE/F.wav', './../assets/sounds/MUGATUS_SILLY_MODE/G.wav', './../assets/sounds/MUGATUS_SILLY_MODE/A.wav', './../assets/sounds/MUGATUS_SILLY_MODE/B.wav'];
+
+	audio.pianoAudio = ['./../assets/sounds/PIANO/C.wav', './../assets/sounds/PIANO/D.wav', './../assets/sounds/PIANO/E.wav', './../assets/sounds/PIANO/F.wav', './../assets/sounds/PIANO/G.wav', './../assets/sounds/PIANO/A.wav', './../assets/sounds/PIANO/B.wav'];
+
+	exports.default = audio;
 
 /***/ }
 /******/ ]);

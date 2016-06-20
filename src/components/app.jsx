@@ -3,38 +3,16 @@ import React, { Component } from 'react';
 import Nav from './nav/nav';
 import Piano from './piano/piano';
 
+import audio from './../helpers/audio';
+
 /* Renders each Piano within the application */
 
 export default class App extends Component {
   constructor(props) {
     super(props)
-    this.necktieAudio = [
-            './../assets/sounds/NECKTIE/C.wav',
-            './../assets/sounds/NECKTIE/D.wav',
-            './../assets/sounds/NECKTIE/E.wav',
-            './../assets/sounds/NECKTIE/F.wav',
-            './../assets/sounds/NECKTIE/G.wav',
-            './../assets/sounds/NECKTIE/A.wav',
-            './../assets/sounds/NECKTIE/B.wav'
-    ];
-    this.sillyAudio = [
-            './../assets/sounds/MUGATUS_SILLY_MODE/C.wav',
-            './../assets/sounds/MUGATUS_SILLY_MODE/D.wav',
-            './../assets/sounds/MUGATUS_SILLY_MODE/E.wav',
-            './../assets/sounds/MUGATUS_SILLY_MODE/F.wav',
-            './../assets/sounds/MUGATUS_SILLY_MODE/G.wav',
-            './../assets/sounds/MUGATUS_SILLY_MODE/A.wav',
-            './../assets/sounds/MUGATUS_SILLY_MODE/B.wav'
-    ];
-    this.pianoAudio = [
-            './../assets/sounds/PIANO/C.wav',
-            './../assets/sounds/PIANO/D.wav',
-            './../assets/sounds/PIANO/E.wav',
-            './../assets/sounds/PIANO/F.wav',
-            './../assets/sounds/PIANO/G.wav',
-            './../assets/sounds/PIANO/A.wav',
-            './../assets/sounds/PIANO/B.wav'
-    ];
+    this.necktieAudio = audio.necktieAudio;
+    this.sillyAudio = audio.sillyAudio;
+    this.pianoAudio = audio.pianoAudio;
     
 
     this.state = {

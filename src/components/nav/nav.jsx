@@ -23,7 +23,9 @@ export default class Nav extends Component {
           <div className='container-fluid'>
             <div className='navbar-collapse collapse' id='footer'>
               <ul className='nav navbar-nav'>
-                <Link to='/'><Button text='Home' /></Link>
+                <Link to='/'>
+                  <Button text='Home' />
+                </Link>
               </ul>
               <ul className='nav navbar-right'>
                 <div className='btn-group'>

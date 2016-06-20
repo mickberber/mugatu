@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+/* Renders Buttons that only utilize text */
 export default class Button extends Component {
     constructor(props) {
         super(props);
