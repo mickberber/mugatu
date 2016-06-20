@@ -6,10 +6,6 @@ It creates allows a user to create unlimited pianos, and remove them.
 
 Pianos created have 7 keys, that each corresponds to a musical chord.
 
-Multiple piano capability coming soon!
-
-Currently the only Piano that is creatable, is a Piano key necktie.
-
 Input passed to each piano's input field, must be in the format similar too:
 'a,b,c' OR 'A,B,C'
 
