@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import WhiteKey from './whiteKey';
+import BlackKeys from './blackKeys';
 import verify from './../../helpers/verify.js';
 
 /* Piano Component */
@@ -114,14 +115,7 @@ export default class Piano extends Component {
                     <div className='white'>
                         {whiteKeys}
                     </div>
-                    <div className='black'>
-                        <div className='keyboard'></div>
-                        <div className='keyboard'></div>
-                        <div className='keyboard' style={{visibility:"hidden"}}></div>
-                        <div className='keyboard'></div>
-                        <div className='keyboard'></div>
-                        <div className='keyboard'></div>
-                    </div>
+                    <BlackKeys />
                     <div>
                         <img src={this.props.img} style={{height: '400px', width: '750px', float: 'right'}}/>
                     </div>
