@@ -25350,7 +25350,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_nav2.default, { addPiano: this.addPiano, removePiano: this.removePiano, chooseType: this.chooseType }),
+	        _react2.default.createElement(_nav2.default, { addPiano: this.addPiano, removePiano: this.removePiano, chooseType: this.chooseType, currentType: this.state.type }),
 	        _react2.default.createElement(
 	          'div',
 	          { style: { display: 'inline' } },
@@ -25439,6 +25439,8 @@
 	            _react2.default.createElement(
 	              'ul',
 	              { className: 'nav navbar-right' },
+	              'Current Type: ',
+	              this.props.currentType,
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'btn-group' },

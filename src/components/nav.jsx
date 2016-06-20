@@ -23,6 +23,7 @@ export default class Nav extends Component {
                 <Link to='/'><button className='btn btn-warning'>Home</button></Link>
               </ul>
               <ul className='nav navbar-right'>
+                Current Type: {this.props.currentType} 
                 <div className='btn-group'>
                   <button type='button' className='btn btn-warning'>pick-a-piano</button>
                   <button type='button' className='btn btn-warning dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
