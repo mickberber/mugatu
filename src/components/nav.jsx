@@ -9,6 +9,10 @@ export default class Nav extends Component {
     this.props = props;
   }
 
+  setType(type) {
+    this.props.chooseType(type);
+  }
+
   render() {
     return (
         <nav className='navbar navbar-inverse'>
@@ -25,9 +29,9 @@ export default class Nav extends Component {
                     <span className='sr-only'>Toggle Dropdown</span>
                   </button>
                   <ul className='dropdown-menu'>
-                    <li onClick={this.props.chooseType}>NeckTie</li>
-                    <li onClick={this.props.chooseType}>Piano</li>
-                    <li onClick={this.props.chooseType}>Silly Mode</li>
+                    <li>NeckTie</li>
+                    <li>Piano</li>
+                    <li>Silly Mode</li>
                   </ul>
                 </div>
                 <button onClick={this.props.addPiano} className='btn btn-warning'>Add Piano</button>

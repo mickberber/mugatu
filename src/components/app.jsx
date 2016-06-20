@@ -32,8 +32,8 @@ export default class App extends Component {
     this.setState({pianos: pianos});
   }
 
-  chooseType() {
-    console.log(event)
+  chooseType(newType) {
+    this.setState({type: newType});
   }
 
   render() {

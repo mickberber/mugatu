@@ -114,7 +114,6 @@ export default class Piano extends Component {
     render() {
         let whiteKeys = this.keys.map((letter, i) => { 
             return <WhiteKey playAudio={this.playAudio} colorChangeCycle={this.colorChangeCycle} BGC={this.state[letter]} addToSequence={this.addToSequence} letter={letter} key={i} audio={this.audio[i]}/> });
-        let blackKeys = 
         return (
             <div>
                 <div>{this.props.pianoType}</div>
