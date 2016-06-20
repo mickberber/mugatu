@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
+import Button from './button';
+
 /* Simple NavBar page */
 
 export default class Nav extends Component {
@@ -21,12 +23,12 @@ export default class Nav extends Component {
           <div className='container-fluid'>
             <div className='navbar-collapse collapse' id='footer'>
               <ul className='nav navbar-nav'>
-                <Link to='/'><button className='btn btn-warning'>Home</button></Link>
+                <Link to='/'><Button text='Home' /></Link>
               </ul>
               <ul className='nav navbar-right'>
                 <div className='btn-group'>
-                  <button type='button' className='btn btn-warning'>Current Type: {this.props.currentType}</button>
-                  <button type='button' className='btn btn-warning'>pick-a-piano</button>
+                  <Button text={'Current Type: ' + this.props.currentType}/>
+                  <Button text='pick-a-piano'/>
                   <button type='button' className='btn btn-warning dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                     <span className='caret'></span>
                     <span className='sr-only'>Toggle Dropdown</span>

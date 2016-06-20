@@ -25818,6 +25818,10 @@
 
 	var _reactRouter = __webpack_require__(186);
 
+	var _button = __webpack_require__(257);
+
+	var _button2 = _interopRequireDefault(_button);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -25865,11 +25869,7 @@
 	              _react2.default.createElement(
 	                _reactRouter.Link,
 	                { to: '/' },
-	                _react2.default.createElement(
-	                  'button',
-	                  { className: 'btn btn-warning' },
-	                  'Home'
-	                )
+	                _react2.default.createElement(_button2.default, { text: 'Home' })
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -25878,17 +25878,8 @@
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'btn-group' },
-	                _react2.default.createElement(
-	                  'button',
-	                  { type: 'button', className: 'btn btn-warning' },
-	                  'Current Type: ',
-	                  this.props.currentType
-	                ),
-	                _react2.default.createElement(
-	                  'button',
-	                  { type: 'button', className: 'btn btn-warning' },
-	                  'pick-a-piano'
-	                ),
+	                _react2.default.createElement(_button2.default, { text: 'Current Type: ' + this.props.currentType }),
+	                _react2.default.createElement(_button2.default, { text: 'pick-a-piano' }),
 	                _react2.default.createElement(
 	                  'button',
 	                  { type: 'button', className: 'btn btn-warning dropdown-toggle', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
@@ -25940,6 +25931,58 @@
 	}(_react.Component);
 
 	exports.default = Nav;
+
+/***/ },
+/* 257 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Button = function (_Component) {
+	    _inherits(Button, _Component);
+
+	    function Button(props) {
+	        _classCallCheck(this, Button);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Button).call(this, props));
+
+	        _this.props = props;
+	        return _this;
+	    }
+
+	    _createClass(Button, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'button',
+	                { type: 'button', className: 'btn btn-warning' },
+	                this.props.text
+	            );
+	        }
+	    }]);
+
+	    return Button;
+	}(_react.Component);
+
+	exports.default = Button;
 
 /***/ }
 /******/ ]);
