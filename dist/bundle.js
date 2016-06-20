@@ -25390,13 +25390,14 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Nav).call(this, props));
 
 	    _this.props = props;
+	    _this.setType.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(Nav, [{
 	    key: 'setType',
-	    value: function setType(type) {
-	      this.props.chooseType(type);
+	    value: function setType() {
+	      this.props.chooseType(arguments[0]);
 	    }
 	  }, {
 	    key: 'render',
@@ -25449,17 +25450,17 @@
 	                  { className: 'dropdown-menu' },
 	                  _react2.default.createElement(
 	                    'li',
-	                    null,
+	                    { onClick: this.setType.bind(this, 'NECKTIE') },
 	                    'NeckTie'
 	                  ),
 	                  _react2.default.createElement(
 	                    'li',
-	                    null,
+	                    { onClick: this.setType.bind(this, 'PIANO') },
 	                    'Piano'
 	                  ),
 	                  _react2.default.createElement(
 	                    'li',
-	                    null,
+	                    { onClick: this.setType.bind(this, 'SILLY') },
 	                    'Silly Mode'
 	                  )
 	                )

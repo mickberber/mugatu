@@ -7,10 +7,11 @@ export default class Nav extends Component {
   constructor(props) {
     super(props);
     this.props = props;
+    this.setType.bind(this);
   }
 
-  setType(type) {
-    this.props.chooseType(type);
+  setType() {
+    this.props.chooseType(arguments[0]);
   }
 
   render() {
@@ -29,9 +30,9 @@ export default class Nav extends Component {
                     <span className='sr-only'>Toggle Dropdown</span>
                   </button>
                   <ul className='dropdown-menu'>
-                    <li>NeckTie</li>
-                    <li>Piano</li>
-                    <li>Silly Mode</li>
+                    <li onClick={this.setType.bind(this, 'NECKTIE')}>NeckTie</li>
+                    <li onClick={this.setType.bind(this, 'PIANO')}>Piano</li>
+                    <li onClick={this.setType.bind(this, 'SILLY')}>Silly Mode</li>
                   </ul>
                 </div>
                 <button onClick={this.props.addPiano} className='btn btn-warning'>Add Piano</button>
