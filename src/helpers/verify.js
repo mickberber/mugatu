@@ -7,6 +7,11 @@ function verify(string) {
     if(typeof string !== 'string') {
         return false;
     }
+    if(string === '') {
+        //test for empty string
+        alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
+        return false;
+    }
     for(var i = 0; i < string.length; i++) {
         //check index 1 for comma
         if(i === 1 && string[i] !== ',') {

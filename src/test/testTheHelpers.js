@@ -5,6 +5,11 @@ function verify(string) {
     if(typeof string !== 'string') {
         return false;
     }
+    if(string === '') {
+        //REMOVE ALERTS FOR TESTING
+        //alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
+        return false;
+    }
     for(var i = 0; i < string.length; i++) {
         if(i === 1 && string[i] !== ',') {
             //REMOVE ALERTS FOR TESTING
@@ -40,6 +45,11 @@ function checkAgainstKeys(val) {
 }
 
 module.exports = write.testFile(
+    write.description('verify should return false when passed an empty string')(
+        tests.compareYield(
+            verify(''), false
+        )
+    ),
     write.description('verify should return false when passed an object')(
         tests.compareYield(
             verify({}), false
