@@ -25739,7 +25739,11 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { onClick: this.handleClick.bind(this), className: 'keyboard', style: { backgroundColor: this.props.BGC } },
-	                this.props.letter
+	                _react2.default.createElement(
+	                    'div',
+	                    { style: { textAlign: 'center', paddingTop: '375px' } },
+	                    this.props.letter
+	                )
 	            );
 	        }
 	    }]);
