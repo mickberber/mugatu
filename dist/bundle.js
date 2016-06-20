@@ -25618,7 +25618,7 @@
 	            }
 	        }
 
-	        /* Sound Helper */
+	        /* SOUND WORKER */
 
 	    }, {
 	        key: 'playAudio',

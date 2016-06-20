@@ -102,7 +102,8 @@ export default class Piano extends Component {
         }
     }
 
-    /* Sound Helper */
+    /* SOUND WORKER */
+
     playAudio(mp3) {
         new Audio(mp3).play();
     }
