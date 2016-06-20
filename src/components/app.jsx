@@ -21,7 +21,7 @@ export default class App extends Component {
   addPiano() {
     //using a pianos variable, as to not mutate state
     let pianos = this.state.pianos;
-    pianos.push(<Piano img='./../assets/pknecktie5.png' pianoType={this.state.type} />);
+    pianos.push(<Piano img={this.state.img} pianoType={this.state.type} />);
     this.setState({pianos: pianos});
   }
 
@@ -32,15 +32,15 @@ export default class App extends Component {
     this.setState({pianos: pianos});
   }
 
-  chooseType(newType) {
-    this.setState({type: newType});
+  chooseType(newType, newImg) {
+    console.log(arguments);
+    this.setState({type: newType, img: newImg});
   }
 
   render() {
     return (
       <div>
         <Nav addPiano={this.addPiano} removePiano={this.removePiano} chooseType={this.chooseType}/>
-        <Piano img='./../assets/pknecktie5.png' pianoType={this.state.type} />
         <div style={{display: 'inline'}}>{this.state.pianos}</div>
       </div>
     );

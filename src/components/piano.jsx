@@ -137,8 +137,8 @@ export default class Piano extends Component {
                 <div>
                     <div>Keys Pressed: {this.state.sequence}</div>
                     <fieldset className='form-group'>
-                        <button onClick={this.handleSequence} className='btn btn-warning'>Play a necktie sequence</button>
-                        <input onChange={this.handleChangeText} className='form-control' placeholder='input string'></input>
+                        <button onClick={this.handleSequence} className='btn btn-warning'>Play a key sequence</button>
+                        <input onChange={this.handleChangeText} className='form-control' placeholder='input key sequence'></input>
                     </fieldset>
                 </div>
             </div>

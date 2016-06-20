@@ -25315,7 +25315,7 @@
 	    value: function addPiano() {
 	      //using a pianos variable, as to not mutate state
 	      var pianos = this.state.pianos;
-	      pianos.push(_react2.default.createElement(_piano2.default, { img: './../assets/pknecktie5.png', pianoType: this.state.type }));
+	      pianos.push(_react2.default.createElement(_piano2.default, { img: this.state.img, pianoType: this.state.type }));
 	      this.setState({ pianos: pianos });
 	    }
 	  }, {
@@ -25328,8 +25328,9 @@
 	    }
 	  }, {
 	    key: 'chooseType',
-	    value: function chooseType(newType) {
-	      this.setState({ type: newType });
+	    value: function chooseType(newType, newImg) {
+	      console.log(arguments);
+	      this.setState({ type: newType, img: newImg });
 	    }
 	  }, {
 	    key: 'render',
@@ -25338,7 +25339,6 @@
 	        'div',
 	        null,
 	        _react2.default.createElement(_nav2.default, { addPiano: this.addPiano, removePiano: this.removePiano, chooseType: this.chooseType }),
-	        _react2.default.createElement(_piano2.default, { img: './../assets/pknecktie5.png', pianoType: this.state.type }),
 	        _react2.default.createElement(
 	          'div',
 	          { style: { display: 'inline' } },
@@ -25397,7 +25397,7 @@
 	  _createClass(Nav, [{
 	    key: 'setType',
 	    value: function setType() {
-	      this.props.chooseType(arguments[0]);
+	      this.props.chooseType(arguments[0], arguments[1]);
 	    }
 	  }, {
 	    key: 'render',
@@ -25450,18 +25450,18 @@
 	                  { className: 'dropdown-menu' },
 	                  _react2.default.createElement(
 	                    'li',
-	                    { onClick: this.setType.bind(this, 'NECKTIE') },
+	                    { onClick: this.setType.bind(this, 'NECKTIE', './../assets/pknecktie5.png') },
 	                    'NeckTie'
 	                  ),
 	                  _react2.default.createElement(
 	                    'li',
-	                    { onClick: this.setType.bind(this, 'PIANO') },
+	                    { onClick: this.setType.bind(this, 'PIANO', './../assets/pknecktie5.png') },
 	                    'Piano'
 	                  ),
 	                  _react2.default.createElement(
 	                    'li',
-	                    { onClick: this.setType.bind(this, 'SILLY') },
-	                    'Silly Mode'
+	                    { onClick: this.setType.bind(this, 'SILLY', './../assets/mugatu-o.gif') },
+	                    'Mugatu\'s Silly Mode'
 	                  )
 	                )
 	              ),
@@ -25689,9 +25689,9 @@
 	                        _react2.default.createElement(
 	                            'button',
 	                            { onClick: this.handleSequence, className: 'btn btn-warning' },
-	                            'Play a necktie sequence'
+	                            'Play a key sequence'
 	                        ),
-	                        _react2.default.createElement('input', { onChange: this.handleChangeText, className: 'form-control', placeholder: 'input string' })
+	                        _react2.default.createElement('input', { onChange: this.handleChangeText, className: 'form-control', placeholder: 'input key sequence' })
 	                    )
 	                )
 	            );

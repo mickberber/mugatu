@@ -11,7 +11,7 @@ export default class Nav extends Component {
   }
 
   setType() {
-    this.props.chooseType(arguments[0]);
+    this.props.chooseType(arguments[0], arguments[1]);
   }
 
   render() {
@@ -30,9 +30,9 @@ export default class Nav extends Component {
                     <span className='sr-only'>Toggle Dropdown</span>
                   </button>
                   <ul className='dropdown-menu'>
-                    <li onClick={this.setType.bind(this, 'NECKTIE')}>NeckTie</li>
-                    <li onClick={this.setType.bind(this, 'PIANO')}>Piano</li>
-                    <li onClick={this.setType.bind(this, 'SILLY')}>Silly Mode</li>
+                    <li onClick={this.setType.bind(this, 'NECKTIE', './../assets/pknecktie5.png')}>NeckTie</li>
+                    <li onClick={this.setType.bind(this, 'PIANO', './../assets/pknecktie5.png')}>Piano</li>
+                    <li onClick={this.setType.bind(this, 'SILLY', './../assets/mugatu-o.gif')}>Mugatu's Silly Mode</li>
                   </ul>
                 </div>
                 <button onClick={this.props.addPiano} className='btn btn-warning'>Add Piano</button>
