@@ -52,7 +52,7 @@ export default class App extends Component {
   addPiano() {
     //using a pianos variable, as to not mutate state
     let pianos = this.state.pianos;
-    pianos.push(<Piano img={this.state.img} pianoType={this.state.type} audio={this.state.audio}/>);
+    pianos.push(<Piano img={this.state.img} pianoType={this.state.type} audio={this.state.audio} key={pianos.length}/>);
     this.setState({pianos: pianos});
   }
 

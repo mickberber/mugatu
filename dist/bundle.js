@@ -25321,7 +25321,7 @@
 	    value: function addPiano() {
 	      //using a pianos variable, as to not mutate state
 	      var pianos = this.state.pianos;
-	      pianos.push(_react2.default.createElement(_piano2.default, { img: this.state.img, pianoType: this.state.type, audio: this.state.audio }));
+	      pianos.push(_react2.default.createElement(_piano2.default, { img: this.state.img, pianoType: this.state.type, audio: this.state.audio, key: pianos.length }));
 	      this.setState({ pianos: pianos });
 	    }
 	  }, {
