@@ -1,8 +1,9 @@
 var tests = require('mc-testing');
 var write = tests.write;
 
-let pianoObject = {thisis: 'adummyPianoObject'}
-let state = { pianos: [] }
+var audio = require('./audioCopy');
+let pianoObject = {thisis: 'adummyPianoObject'};
+let state = { pianos: [], type: 'NECKTIE', audio: audio.necktieAudio };
 // FOR TESTING
 //this.state has been replaced with a local version of state
 function addPiano() {
@@ -23,6 +24,19 @@ function removePiano() {
     state.pianos = pianos;
 }
 
+function chooseType(newType, newImg) {
+    //set new types' properties before creating a new piano  
+    if(newType === 'MUGATUS_SILLY_MODE') {
+        //this.setState has also been removed for testing
+        state({type: newType, img: newImg, audio: audio.sillyAudio});
+    } else if(newType === 'PIANO') {
+        //this.setState has also been removed for testing
+        state({type: newType, img: newImg, audio: audio.pianoAudio});
+    } else {
+        //this.setState has also been removed for testing
+        state({type: newType, img: newImg, audio: audio.necktieAudio});
+    }
+}
 
 module.exports = write.testFile(
     write.description('Add Piano should push a React Piano object into state.pianos')(
