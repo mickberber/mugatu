@@ -11,6 +11,7 @@ export default class Nav extends Component {
   }
 
   setType() {
+    //passes local properties back to parent to set piano type
     this.props.chooseType(arguments[0], arguments[1]);
   }
 
@@ -23,8 +24,8 @@ export default class Nav extends Component {
                 <Link to='/'><button className='btn btn-warning'>Home</button></Link>
               </ul>
               <ul className='nav navbar-right'>
-                Current Type: {this.props.currentType} 
                 <div className='btn-group'>
+                  <button type='button' className='btn btn-warning'>Current Type: {this.props.currentType}</button>
                   <button type='button' className='btn btn-warning'>pick-a-piano</button>
                   <button type='button' className='btn btn-warning dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                     <span className='caret'></span>

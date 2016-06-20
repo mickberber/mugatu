@@ -64,7 +64,7 @@ export default class App extends Component {
   }
 
   chooseType(newType, newImg) {
-    //set new types' properties before creating a new   
+    //set new types' properties before creating a new piano  
     if(newType === 'MUGATUS_SILLY_MODE') {
       this.setState({type: newType, img: newImg, audio: this.sillyAudio});
     } else if(newType === 'PIANO') {

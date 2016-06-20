@@ -25335,7 +25335,7 @@
 	  }, {
 	    key: 'chooseType',
 	    value: function chooseType(newType, newImg) {
-	      //set new types' properties before creating a new  
+	      //set new types' properties before creating a new piano 
 	      if (newType === 'MUGATUS_SILLY_MODE') {
 	        this.setState({ type: newType, img: newImg, audio: this.sillyAudio });
 	      } else if (newType === 'PIANO') {
@@ -25409,6 +25409,7 @@
 	  _createClass(Nav, [{
 	    key: 'setType',
 	    value: function setType() {
+	      //passes local properties back to parent to set piano type
 	      this.props.chooseType(arguments[0], arguments[1]);
 	    }
 	  }, {
@@ -25439,11 +25440,15 @@
 	            _react2.default.createElement(
 	              'ul',
 	              { className: 'nav navbar-right' },
-	              'Current Type: ',
-	              this.props.currentType,
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'btn-group' },
+	                _react2.default.createElement(
+	                  'button',
+	                  { type: 'button', className: 'btn btn-warning' },
+	                  'Current Type: ',
+	                  this.props.currentType
+	                ),
 	                _react2.default.createElement(
 	                  'button',
 	                  { type: 'button', className: 'btn btn-warning' },
