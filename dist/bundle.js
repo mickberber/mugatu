@@ -25299,11 +25299,17 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 
+	    _this.necktieAudio = ['./../assets/sounds/NECKTIE/C.wav', './../assets/sounds/NECKTIE/D.wav', './../assets/sounds/NECKTIE/E.wav', './../assets/sounds/NECKTIE/F.wav', './../assets/sounds/NECKTIE/G.wav', './../assets/sounds/NECKTIE/A.wav', './../assets/sounds/NECKTIE/B.wav'];
+	    _this.sillyAudio = ['./../assets/sounds/MUGATUS_SILLY_MODE/C.wav', './../assets/sounds/MUGATUS_SILLY_MODE/D.wav', './../assets/sounds/MUGATUS_SILLY_MODE/E.wav', './../assets/sounds/MUGATUS_SILLY_MODE/F.wav', './../assets/sounds/MUGATUS_SILLY_MODE/G.wav', './../assets/sounds/MUGATUS_SILLY_MODE/A.wav', './../assets/sounds/MUGATUS_SILLY_MODE/B.wav'];
+	    _this.pianoAudio = ['./../assets/sounds/PIANO/C.wav', './../assets/sounds/PIANO/D.wav', './../assets/sounds/PIANO/E.wav', './../assets/sounds/PIANO/F.wav', './../assets/sounds/PIANO/G.wav', './../assets/sounds/PIANO/A.wav', './../assets/sounds/PIANO/B.wav'];
+
 	    _this.state = {
 	      pianos: [],
 	      img: './../assets/pknecktie5.png',
-	      type: 'NECKTIE'
+	      type: 'NECKTIE',
+	      audio: _this.audio1
 	    };
+
 	    _this.addPiano = _this.addPiano.bind(_this);
 	    _this.removePiano = _this.removePiano.bind(_this);
 	    _this.chooseType = _this.chooseType.bind(_this);
@@ -25315,7 +25321,7 @@
 	    value: function addPiano() {
 	      //using a pianos variable, as to not mutate state
 	      var pianos = this.state.pianos;
-	      pianos.push(_react2.default.createElement(_piano2.default, { img: this.state.img, pianoType: this.state.type }));
+	      pianos.push(_react2.default.createElement(_piano2.default, { img: this.state.img, pianoType: this.state.type, audio: this.state.audio }));
 	      this.setState({ pianos: pianos });
 	    }
 	  }, {
@@ -25329,7 +25335,13 @@
 	  }, {
 	    key: 'chooseType',
 	    value: function chooseType(newType, newImg) {
-	      this.setState({ type: newType, img: newImg });
+	      if (newType === 'MUGATUS_SILLY_MODE') {
+	        this.setState({ type: newType, img: newImg, audio: this.sillyAudio });
+	      } else if (newType === 'PIANO') {
+	        this.setState({ type: newType, img: newImg, audio: this.pianoAudio });
+	      } else {
+	        this.setState({ type: newType, img: newImg, audio: this.necktieAudio });
+	      }
 	    }
 	  }, {
 	    key: 'render',
@@ -25459,7 +25471,7 @@
 	                  ),
 	                  _react2.default.createElement(
 	                    'li',
-	                    { onClick: this.setType.bind(this, 'MUGATU\'S SILLY MODE', './../assets/mugatu-o.gif') },
+	                    { onClick: this.setType.bind(this, 'MUGATUS_SILLY_MODE', './../assets/mugatu-o.gif') },
 	                    'Mugatu\'s Silly Mode'
 	                  )
 	                )
@@ -25530,7 +25542,8 @@
 
 	        _this.props = props;
 	        _this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
-	        _this.audio = ['./../assets/sounds/C.wav', './../assets/sounds/D.wav', './../assets/sounds/E.wav', './../assets/sounds/F.wav', './../assets/sounds/G.wav', './../assets/sounds/A.wav', './../assets/sounds/B.wav'];
+	        _this.audio = props.audio;
+
 	        _this.state = {
 	            sequence: [],
 	            text: '',
@@ -25578,7 +25591,7 @@
 	            function createVisibleSync() {
 	                // runs subsequent calls, returns out of recursion if index has increased past last index in sequence
 	                this.colorChangeCycle(userInput[index].toUpperCase());
-	                var mp3 = './../assets/sounds/' + userInput[index].toUpperCase() + '.wav';
+	                var mp3 = './../assets/sounds/' + '/' + this.props.pianoType + '/' + userInput[index].toUpperCase() + '.wav';
 	                this.playAudio(mp3);
 	                index++;
 	                if (index >= userInput.length) {
@@ -25589,7 +25602,7 @@
 	            }
 	            //run call on first item in sequence
 	            this.colorChangeCycle(userInput[index].toUpperCase());
-	            var mp3 = './../assets/sounds/' + userInput[index].toUpperCase() + '.wav';
+	            var mp3 = './../assets/sounds/' + '/' + this.props.pianoType + '/' + userInput[index].toUpperCase() + '.wav';
 	            this.playAudio(mp3);
 	            index++;
 	            //delays subsequent calls

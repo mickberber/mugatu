@@ -10,15 +10,8 @@ export default class Piano extends Component {
         super(props);
         this.props = props;
         this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
-        this.audio = [
-            './../assets/sounds/C.wav',
-            './../assets/sounds/D.wav',
-            './../assets/sounds/E.wav',
-            './../assets/sounds/F.wav',
-            './../assets/sounds/G.wav',
-            './../assets/sounds/A.wav',
-            './../assets/sounds/B.wav'
-        ];
+        this.audio = props.audio;
+
         this.state = {
             sequence: [],
             text: '',
@@ -61,7 +54,7 @@ export default class Piano extends Component {
         function createVisibleSync() {
             // runs subsequent calls, returns out of recursion if index has increased past last index in sequence
             this.colorChangeCycle(userInput[index].toUpperCase());
-            let mp3 = './../assets/sounds/' + userInput[index].toUpperCase() + '.wav';
+            let mp3 = './../assets/sounds/' + '/' + this.props.pianoType + '/' + userInput[index].toUpperCase() + '.wav';
             this.playAudio(mp3);
             index++;
             if(index >= userInput.length) {
@@ -72,7 +65,7 @@ export default class Piano extends Component {
         }
         //run call on first item in sequence
         this.colorChangeCycle(userInput[index].toUpperCase());
-        let mp3 = './../assets/sounds/' + userInput[index].toUpperCase() + '.wav';
+        let mp3 = './../assets/sounds/' + '/' + this.props.pianoType + '/' + userInput[index].toUpperCase() + '.wav';
         this.playAudio(mp3);
         index++;
         //delays subsequent calls
