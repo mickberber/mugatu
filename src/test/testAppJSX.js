@@ -3,13 +3,15 @@ var write = tests.write;
 
 var audio = require('./audioCopy');
 let pianoObject = {thisis: 'adummyPianoObject'};
-let state = { pianos: [], type: 'NECKTIE', audio: audio.necktieAudio };
-// FOR TESTING
 //this.state has been replaced with a local version of state
+let state = { pianos: [], type: 'NECKTIE', audio: audio.necktieAudio };
+
+
 function addPiano() {
     //using a pianos variable, as to not mutate state
     let pianos = state.pianos;
     pianos.push(pianoObject);
+
     //this.setState has also been removed for testing
     //this.setState({pianos: pianos});
     state.pianos = pianos;
@@ -19,6 +21,7 @@ function removePiano() {
     //using a pianos variable, as to not mutate state
     let pianos = state.pianos;
     pianos.pop();
+
     //this.setState has also been removed for testing    
     //this.setState({pianos: pianos});
     state.pianos = pianos;
@@ -28,13 +31,19 @@ function chooseType(newType, newImg) {
     //set new types' properties before creating a new piano  
     if(newType === 'MUGATUS_SILLY_MODE') {
         //this.setState has also been removed for testing
-        state({type: newType, img: newImg, audio: audio.sillyAudio});
+        state.type = newType;
+        state.img = newImg;
+        state.audio = audio.sillyAudio;
     } else if(newType === 'PIANO') {
         //this.setState has also been removed for testing
-        state({type: newType, img: newImg, audio: audio.pianoAudio});
+        state.type = newType;
+        state.img = newImg;
+        state.audio = audio.pianoAudio;
     } else {
         //this.setState has also been removed for testing
-        state({type: newType, img: newImg, audio: audio.necktieAudio});
+        state.type = newType;
+        state.img = newImg;
+        state.audio = audio.necktieAudio;
     }
 }
 
@@ -62,6 +71,11 @@ module.exports = write.testFile(
     write.description('Remove Piano should pop a React Piano object off of state.pianos')(
         tests.compareYield(
             (() => { removePiano(); return state.pianos.length; })(), 1
+        )
+    ),
+    write.description('Remove Piano should pop a React Piano object off of state.pianos')(
+        tests.compareYield(
+            (() => { removePiano(); return state.pianos.length; })(), 0
         )
     )
 );
