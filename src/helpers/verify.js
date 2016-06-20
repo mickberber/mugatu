@@ -1,6 +1,5 @@
 export default verify;
 
-
 /* Verify User Input Formatting */
 function verify(string) {
     //check type

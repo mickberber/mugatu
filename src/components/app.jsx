@@ -10,15 +10,12 @@ import audio from './../helpers/audio';
 export default class App extends Component {
   constructor(props) {
     super(props)
-    this.necktieAudio = audio.necktieAudio;
-    this.sillyAudio = audio.sillyAudio;
-    this.pianoAudio = audio.pianoAudio;
 
     this.state = {
       pianos: [],
       img: './../assets/pknecktie5.png',
       type: 'NECKTIE',
-      audio: this.necktieAudio
+      audio: audio.necktieAudio
     };
 
     this.addPiano = this.addPiano.bind(this);
@@ -43,11 +40,11 @@ export default class App extends Component {
   chooseType(newType, newImg) {
     //set new types' properties before creating a new piano  
     if(newType === 'MUGATUS_SILLY_MODE') {
-      this.setState({type: newType, img: newImg, audio: this.sillyAudio});
+      this.setState({type: newType, img: newImg, audio: audio.sillyAudio});
     } else if(newType === 'PIANO') {
-      this.setState({type: newType, img: newImg, audio: this.pianoAudio});
+      this.setState({type: newType, img: newImg, audio: audio.pianoAudio});
     } else {
-      this.setState({type: newType, img: newImg, audio: this.necktieAudio});
+      this.setState({type: newType, img: newImg, audio: audio.necktieAudio});
     }
   }
 

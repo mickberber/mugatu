@@ -25303,15 +25303,11 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 
-	    _this.necktieAudio = _audio2.default.necktieAudio;
-	    _this.sillyAudio = _audio2.default.sillyAudio;
-	    _this.pianoAudio = _audio2.default.pianoAudio;
-
 	    _this.state = {
 	      pianos: [],
 	      img: './../assets/pknecktie5.png',
 	      type: 'NECKTIE',
-	      audio: _this.necktieAudio
+	      audio: _audio2.default.necktieAudio
 	    };
 
 	    _this.addPiano = _this.addPiano.bind(_this);
@@ -25341,11 +25337,11 @@
 	    value: function chooseType(newType, newImg) {
 	      //set new types' properties before creating a new piano 
 	      if (newType === 'MUGATUS_SILLY_MODE') {
-	        this.setState({ type: newType, img: newImg, audio: this.sillyAudio });
+	        this.setState({ type: newType, img: newImg, audio: _audio2.default.sillyAudio });
 	      } else if (newType === 'PIANO') {
-	        this.setState({ type: newType, img: newImg, audio: this.pianoAudio });
+	        this.setState({ type: newType, img: newImg, audio: _audio2.default.pianoAudio });
 	      } else {
-	        this.setState({ type: newType, img: newImg, audio: this.necktieAudio });
+	        this.setState({ type: newType, img: newImg, audio: _audio2.default.necktieAudio });
 	      }
 	    }
 	  }, {
@@ -26002,6 +25998,8 @@
 	Object.defineProperty(exports, "__esModule", {
 	        value: true
 	});
+	// File for Audio file paths
+
 	var audio = {};
 
 	audio.necktieAudio = ['./../assets/sounds/NECKTIE/C.wav', './../assets/sounds/NECKTIE/D.wav', './../assets/sounds/NECKTIE/E.wav', './../assets/sounds/NECKTIE/F.wav', './../assets/sounds/NECKTIE/G.wav', './../assets/sounds/NECKTIE/A.wav', './../assets/sounds/NECKTIE/B.wav'];
