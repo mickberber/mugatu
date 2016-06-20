@@ -25353,7 +25353,7 @@
 	        _react2.default.createElement(_nav2.default, { addPiano: this.addPiano, removePiano: this.removePiano, chooseType: this.chooseType, currentType: this.state.type }),
 	        _react2.default.createElement(
 	          'div',
-	          { style: { display: 'inline' } },
+	          null,
 	          this.state.pianos
 	        )
 	      );
@@ -25628,6 +25628,7 @@
 	            var whiteKeys = this.keys.map(function (letter, i) {
 	                return _react2.default.createElement(_whiteKey2.default, { playAudio: _this3.playAudio, colorChangeCycle: _this3.colorChangeCycle, BGC: _this3.state[letter], addToSequence: _this3.addToSequence, letter: letter, key: i, audio: _this3.audio[i] });
 	            });
+
 	            return _react2.default.createElement(
 	                'div',
 	                null,
@@ -25769,6 +25770,8 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/* Black Keys */
 
 	var BlackKeys = function (_Component) {
 	    _inherits(BlackKeys, _Component);

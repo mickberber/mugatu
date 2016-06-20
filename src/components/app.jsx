@@ -78,7 +78,7 @@ export default class App extends Component {
     return (
       <div>
         <Nav addPiano={this.addPiano} removePiano={this.removePiano} chooseType={this.chooseType} currentType={this.state.type}/>
-        <div style={{display: 'inline'}}>{this.state.pianos}</div>
+        <div>{this.state.pianos}</div>
       </div>
     );
   }
