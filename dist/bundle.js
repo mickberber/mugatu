@@ -25273,7 +25273,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _nav = __webpack_require__(247);
+	var _nav = __webpack_require__(256);
 
 	var _nav2 = _interopRequireDefault(_nav);
 
@@ -25366,147 +25366,7 @@
 	exports.default = App;
 
 /***/ },
-/* 247 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(186);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	/* Simple NavBar page */
-
-	var Nav = function (_Component) {
-	  _inherits(Nav, _Component);
-
-	  function Nav(props) {
-	    _classCallCheck(this, Nav);
-
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Nav).call(this, props));
-
-	    _this.props = props;
-	    _this.setType.bind(_this);
-	    return _this;
-	  }
-
-	  _createClass(Nav, [{
-	    key: 'setType',
-	    value: function setType() {
-	      //passes local properties back to parent to set piano type
-	      this.props.chooseType(arguments[0], arguments[1]);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'nav',
-	        { className: 'navbar navbar-inverse' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'container-fluid' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'navbar-collapse collapse', id: 'footer' },
-	            _react2.default.createElement(
-	              'ul',
-	              { className: 'nav navbar-nav' },
-	              _react2.default.createElement(
-	                _reactRouter.Link,
-	                { to: '/' },
-	                _react2.default.createElement(
-	                  'button',
-	                  { className: 'btn btn-warning' },
-	                  'Home'
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'ul',
-	              { className: 'nav navbar-right' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'btn-group' },
-	                _react2.default.createElement(
-	                  'button',
-	                  { type: 'button', className: 'btn btn-warning' },
-	                  'Current Type: ',
-	                  this.props.currentType
-	                ),
-	                _react2.default.createElement(
-	                  'button',
-	                  { type: 'button', className: 'btn btn-warning' },
-	                  'pick-a-piano'
-	                ),
-	                _react2.default.createElement(
-	                  'button',
-	                  { type: 'button', className: 'btn btn-warning dropdown-toggle', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
-	                  _react2.default.createElement('span', { className: 'caret' }),
-	                  _react2.default.createElement(
-	                    'span',
-	                    { className: 'sr-only' },
-	                    'Toggle Dropdown'
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'ul',
-	                  { className: 'dropdown-menu' },
-	                  _react2.default.createElement(
-	                    'li',
-	                    { onClick: this.setType.bind(this, 'NECKTIE', './../assets/pknecktie5.png') },
-	                    'NeckTie'
-	                  ),
-	                  _react2.default.createElement(
-	                    'li',
-	                    { onClick: this.setType.bind(this, 'PIANO', './../assets/piano.jpg') },
-	                    'Piano'
-	                  ),
-	                  _react2.default.createElement(
-	                    'li',
-	                    { onClick: this.setType.bind(this, 'MUGATUS_SILLY_MODE', './../assets/mugatu-o.gif') },
-	                    'Mugatu\'s Silly Mode'
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'button',
-	                { onClick: this.props.addPiano, className: 'btn btn-warning' },
-	                'Add Piano'
-	              ),
-	              _react2.default.createElement(
-	                'button',
-	                { onClick: this.props.removePiano, className: 'btn btn-warning' },
-	                'Remove Piano'
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Nav;
-	}(_react.Component);
-
-	exports.default = Nav;
-
-/***/ },
+/* 247 */,
 /* 248 */,
 /* 249 */,
 /* 250 */
@@ -25582,10 +25442,6 @@
 	var _react2 = _interopRequireDefault(_react);
 
 	var _reactRouter = __webpack_require__(186);
-
-	var _nav = __webpack_require__(247);
-
-	var _nav2 = _interopRequireDefault(_nav);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25943,6 +25799,147 @@
 	}(_react.Component);
 
 	exports.default = BlackKeys;
+
+/***/ },
+/* 256 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(186);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/* Simple NavBar page */
+
+	var Nav = function (_Component) {
+	  _inherits(Nav, _Component);
+
+	  function Nav(props) {
+	    _classCallCheck(this, Nav);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Nav).call(this, props));
+
+	    _this.props = props;
+	    _this.setType.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(Nav, [{
+	    key: 'setType',
+	    value: function setType() {
+	      //passes local properties back to parent to set piano type
+	      this.props.chooseType(arguments[0], arguments[1]);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'nav',
+	        { className: 'navbar navbar-inverse' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'container-fluid' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'navbar-collapse collapse', id: 'footer' },
+	            _react2.default.createElement(
+	              'ul',
+	              { className: 'nav navbar-nav' },
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/' },
+	                _react2.default.createElement(
+	                  'button',
+	                  { className: 'btn btn-warning' },
+	                  'Home'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'ul',
+	              { className: 'nav navbar-right' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'btn-group' },
+	                _react2.default.createElement(
+	                  'button',
+	                  { type: 'button', className: 'btn btn-warning' },
+	                  'Current Type: ',
+	                  this.props.currentType
+	                ),
+	                _react2.default.createElement(
+	                  'button',
+	                  { type: 'button', className: 'btn btn-warning' },
+	                  'pick-a-piano'
+	                ),
+	                _react2.default.createElement(
+	                  'button',
+	                  { type: 'button', className: 'btn btn-warning dropdown-toggle', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
+	                  _react2.default.createElement('span', { className: 'caret' }),
+	                  _react2.default.createElement(
+	                    'span',
+	                    { className: 'sr-only' },
+	                    'Toggle Dropdown'
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'ul',
+	                  { className: 'dropdown-menu' },
+	                  _react2.default.createElement(
+	                    'li',
+	                    { onClick: this.setType.bind(this, 'NECKTIE', './../assets/pknecktie5.png') },
+	                    'NeckTie'
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    { onClick: this.setType.bind(this, 'PIANO', './../assets/piano.jpg') },
+	                    'Piano'
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    { onClick: this.setType.bind(this, 'MUGATUS_SILLY_MODE', './../assets/mugatu-o.gif') },
+	                    'Mugatu\'s Silly Mode'
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'button',
+	                { onClick: this.props.addPiano, className: 'btn btn-warning' },
+	                'Add Piano'
+	              ),
+	              _react2.default.createElement(
+	                'button',
+	                { onClick: this.props.removePiano, className: 'btn btn-warning' },
+	                'Remove Piano'
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Nav;
+	}(_react.Component);
+
+	exports.default = Nav;
 
 /***/ }
 /******/ ]);

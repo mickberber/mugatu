@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-import Nav from './nav';
-
-
 /* Simple Splash page */
 
 export default function Splash() {

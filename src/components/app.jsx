@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Nav from './nav';
+import Nav from './nav/nav';
 import Piano from './piano/piano';
 
 /* Renders each Piano within the application */

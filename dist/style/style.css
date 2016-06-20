@@ -45,7 +45,7 @@
 }
 
 .navbar {
-    background-color: transparent;
-    background: transparent;
-    border-width: 0px;
+    background-color: #76EE00;
+    border-width: 1px;
+    border-color: black;
 }
