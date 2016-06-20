@@ -31,8 +31,8 @@ export default class Nav extends Component {
                   </button>
                   <ul className='dropdown-menu'>
                     <li onClick={this.setType.bind(this, 'NECKTIE', './../assets/pknecktie5.png')}>NeckTie</li>
-                    <li onClick={this.setType.bind(this, 'PIANO', './../assets/pknecktie5.png')}>Piano</li>
-                    <li onClick={this.setType.bind(this, 'SILLY', './../assets/mugatu-o.gif')}>Mugatu's Silly Mode</li>
+                    <li onClick={this.setType.bind(this, 'PIANO', './../assets/piano.jpg')}>Piano</li>
+                    <li onClick={this.setType.bind(this, 'MUGATU\'S SILLY MODE', './../assets/mugatu-o.gif')}>Mugatu's Silly Mode</li>
                   </ul>
                 </div>
                 <button onClick={this.props.addPiano} className='btn btn-warning'>Add Piano</button>

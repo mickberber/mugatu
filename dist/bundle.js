@@ -25329,7 +25329,6 @@
 	  }, {
 	    key: 'chooseType',
 	    value: function chooseType(newType, newImg) {
-	      console.log(arguments);
 	      this.setState({ type: newType, img: newImg });
 	    }
 	  }, {
@@ -25455,12 +25454,12 @@
 	                  ),
 	                  _react2.default.createElement(
 	                    'li',
-	                    { onClick: this.setType.bind(this, 'PIANO', './../assets/pknecktie5.png') },
+	                    { onClick: this.setType.bind(this, 'PIANO', './../assets/piano.jpg') },
 	                    'Piano'
 	                  ),
 	                  _react2.default.createElement(
 	                    'li',
-	                    { onClick: this.setType.bind(this, 'SILLY', './../assets/mugatu-o.gif') },
+	                    { onClick: this.setType.bind(this, 'MUGATU\'S SILLY MODE', './../assets/mugatu-o.gif') },
 	                    'Mugatu\'s Silly Mode'
 	                  )
 	                )

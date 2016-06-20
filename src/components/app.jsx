@@ -33,7 +33,6 @@ export default class App extends Component {
   }
 
   chooseType(newType, newImg) {
-    console.log(arguments);
     this.setState({type: newType, img: newImg});
   }
 
