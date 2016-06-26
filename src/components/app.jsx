@@ -10,7 +10,8 @@ export default class App extends Component {
   constructor(props) {
     super(props)
 
-    this.state = store.getState(); 
+    this.state = store.getState();
+    console.log(this.state); 
 
     this.addPiano = this.addPiano.bind(this);
     this.removePiano = this.removePiano.bind(this);
@@ -21,9 +22,9 @@ export default class App extends Component {
     //dispatch new piano to redux store
     store.dispatch({
       type: 'ADD_PIANO',
-      piano: <Piano img={this.state.img} 
-                    pianoType={this.state.type} 
-                    audio={this.state.audio} 
+      piano: <Piano img={this.state.mugatuApp.img} 
+                    pianoType={this.state.mugatuApp.type} 
+                    audio={this.state.mugatuApp.audio} 
                     key={this.state.pianos.length}
                     />
     });
@@ -59,7 +60,7 @@ export default class App extends Component {
         <Nav addPiano={this.addPiano} 
              removePiano={this.removePiano}  
              chooseType={this.chooseType} 
-             currentType={this.state.type}
+             currentType={this.state.mugatuApp.type}
              />
         <div>{store.getState().pianos}</div>
       </div>

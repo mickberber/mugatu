@@ -25335,6 +25335,7 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 
 	    _this.state = _index2.default.getState();
+	    console.log(_this.state);
 
 	    _this.addPiano = _this.addPiano.bind(_this);
 	    _this.removePiano = _this.removePiano.bind(_this);
@@ -25348,9 +25349,9 @@
 	      //dispatch new piano to redux store
 	      _index2.default.dispatch({
 	        type: 'ADD_PIANO',
-	        piano: _react2.default.createElement(_piano2.default, { img: this.state.img,
-	          pianoType: this.state.type,
-	          audio: this.state.audio,
+	        piano: _react2.default.createElement(_piano2.default, { img: this.state.mugatuApp.img,
+	          pianoType: this.state.mugatuApp.type,
+	          audio: this.state.mugatuApp.audio,
 	          key: this.state.pianos.length
 	        })
 	      });
@@ -25390,7 +25391,7 @@
 	        _react2.default.createElement(_nav2.default, { addPiano: this.addPiano,
 	          removePiano: this.removePiano,
 	          chooseType: this.chooseType,
-	          currentType: this.state.type
+	          currentType: this.state.mugatuApp.type
 	        }),
 	        _react2.default.createElement(
 	          'div',
@@ -26040,26 +26041,56 @@
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-	var initialState = {
-	    pianos: [],
-	    img: './../assets/pknecktie5.png',
-	    type: 'NECKTIE',
-	    audio: _audio2.default.necktieAudio
-	};
+	// const initialState = {
+	//     pianos: [],
+	//     img: './../assets/pknecktie5.png',
+	//     type: 'NECKTIE',
+	//     audio: audio.necktieAudio
+	// }
+	//
+	// function AppReducer(state = initialState, action) {
+	//     switch(action.type) {
+	//         case ADD_PIANO:
+	//             return Object.assign({}, state, {
+	//                 pianos: [
+	//                     ...state.pianos,
+	//                     action.piano
+	//                 ]
+	//             })
+	//         case REMOVE_PIANO:
+	//             return Object.assign({}, state, {
+	//                 pianos: state.pianos.slice(0, (state.pianos.length - 1))
+	//             })
+	//         case CHOOSE_TYPE:
+	//             return Object.assign({}, state, {
+	//                 img: action.img,
+	//                 type: action.mode,
+	//                 audio: action.audio
+	//             })
+	//         default:
+	//             return state
+	//     }
+	// }
 
-	function AppReducer() {
-	    var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	function pianos() {
+	    var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
 	    var action = arguments[1];
 
 	    switch (action.type) {
 	        case _index.ADD_PIANO:
-	            return Object.assign({}, state, {
-	                pianos: [].concat(_toConsumableArray(state.pianos), [action.piano])
-	            });
+	            return [].concat(_toConsumableArray(state), [action.piano]);
 	        case _index.REMOVE_PIANO:
-	            return Object.assign({}, state, {
-	                pianos: state.pianos.slice(0, state.pianos.length - 1)
-	            });
+	            return state.pianos.slice(0, state.pianos.length - 1);
+	        default:
+	            return state;
+	    }
+	}
+
+	function mugatuApp() {
+	    var state = arguments.length <= 0 || arguments[0] === undefined ? _index.PianoFilters : arguments[0];
+	    var action = arguments[1];
+
+	    switch (action.type) {
 	        case _index.CHOOSE_TYPE:
 	            return Object.assign({}, state, {
 	                img: action.img,
@@ -26071,7 +26102,12 @@
 	    }
 	}
 
-	var store = (0, _redux.createStore)(AppReducer);
+	var Reducers = (0, _redux.combineReducers)({
+	    mugatuApp: mugatuApp,
+	    pianos: pianos
+	});
+
+	var store = (0, _redux.createStore)(Reducers);
 
 	exports.default = store;
 
