@@ -4,7 +4,7 @@ import Nav from './nav/nav';
 import Piano from './piano/piano';
 
 import store from './../reducers/index';
-import { addPianoAction, removePianoAction } from './../actions/index';
+import { addPianoAction, removePianoAction, chooseTypeAction } from './../actions/index';
 /* Renders each Piano within the application */
 
 export default class App extends Component {
@@ -42,12 +42,7 @@ export default class App extends Component {
   }
 
   chooseType(newType, newImg, newAudio) {
-    store.dispatch({
-        type: 'CHOOSE_TYPE',
-        mode: newType,
-        img: newImg,
-        audio: newAudio
-    });
+    store.dispatch(chooseTypeAction(newType, newImg, newAudio));
     this.setState(store.getState());
   }
 
