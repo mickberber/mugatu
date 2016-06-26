@@ -3,20 +3,14 @@ import React, { Component } from 'react';
 import Nav from './nav/nav';
 import Piano from './piano/piano';
 
-import audio from './../helpers/audio';
-
 /* Renders each Piano within the application */
+import store from './../reducers/index';
 
 export default class App extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      pianos: [],
-      img: './../assets/pknecktie5.png',
-      type: 'NECKTIE',
-      audio: audio.necktieAudio
-    };
+    this.state = store.getState(); 
 
     this.addPiano = this.addPiano.bind(this);
     this.removePiano = this.removePiano.bind(this);
@@ -24,38 +18,42 @@ export default class App extends Component {
   }
 
   addPiano() {
-    //using a pianos variable, as to not mutate state
-    let pianos = this.state.pianos;
-    pianos.push(<Piano img={this.state.img} pianoType={this.state.type} audio={this.state.audio} key={pianos.length}/>);
-    this.setState({pianos: pianos});
+    //dispatch new piano to redux store
+    store.dispatch({
+      type: 'ADD_PIANO',
+      piano: <Piano img={this.state.img} pianoType={this.state.type} audio={this.state.audio} key={this.state.pianos.length}/>
+    });
+    //set state again to rerender
+    this.setState({pianos: store.getState().pianos})
   }
 
   removePiano() {
     if(this.state.pianos.length === 0) {
       alert('No pianos to remove!');
     }
-    //using a pianos variable, as to not mutate state
-    let pianos = this.state.pianos;
-    pianos.pop();
-    this.setState({pianos: pianos});
+    //dispatch to redux store to remove piano 
+    store.dispatch({
+      type: 'REMOVE_PIANO'
+    });
+    //set state again to rerender
+    this.setState({pianos: store.getState().pianos})
   }
 
-  chooseType(newType, newImg) {
-    //set new types' properties before creating a new piano  
-    if(newType === 'MUGATUS_SILLY_MODE') {
-      this.setState({type: newType, img: newImg, audio: audio.sillyAudio});
-    } else if(newType === 'PIANO') {
-      this.setState({type: newType, img: newImg, audio: audio.pianoAudio});
-    } else {
-      this.setState({type: newType, img: newImg, audio: audio.necktieAudio});
-    }
+  chooseType(newType, newImg, newAudio) {
+    store.dispatch({
+        type: 'CHOOSE_TYPE',
+        mode: newType,
+        img: newImg,
+        audio: newAudio
+    });
+    this.setState(store.getState());
   }
 
   render() {
     return (
       <div>
         <Nav addPiano={this.addPiano} removePiano={this.removePiano} chooseType={this.chooseType} currentType={this.state.type}/>
-        <div>{this.state.pianos}</div>
+        <div>{store.getState().pianos}</div>
       </div>
     );
   }
