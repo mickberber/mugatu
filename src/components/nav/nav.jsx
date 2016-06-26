@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 
 import Button from './button';
 
+import audio from './../../helpers/audio';
+
 /* Simple NavBar page */
 
 export default class Nav extends Component {
@@ -14,7 +16,7 @@ export default class Nav extends Component {
 
   setType() {
     //passes local properties back to parent to set piano type
-    this.props.chooseType(arguments[0], arguments[1]);
+    this.props.chooseType(arguments[0], arguments[1], arguments[2]);
   }
 
   render() {
@@ -36,9 +38,9 @@ export default class Nav extends Component {
                     <span className='sr-only'>Toggle Dropdown</span>
                   </button>
                   <ul className='dropdown-menu'>
-                    <li onClick={this.setType.bind(this, 'NECKTIE', './../assets/pknecktie5.png')}>NeckTie</li>
-                    <li onClick={this.setType.bind(this, 'PIANO', './../assets/piano.jpg')}>Piano</li>
-                    <li onClick={this.setType.bind(this, 'MUGATUS_SILLY_MODE', './../assets/mugatu-o.gif')}>Mugatu's Silly Mode</li>
+                    <li onClick={this.setType.bind(this, 'NECKTIE', './../assets/pknecktie5.png', audio.necktieAudio)}>NeckTie</li>
+                    <li onClick={this.setType.bind(this, 'PIANO', './../assets/piano.jpg', audio.pianoAudio)}>Piano</li>
+                    <li onClick={this.setType.bind(this, 'MUGATUS_SILLY_MODE', './../assets/mugatu-o.gif', audio.sillyAudio)}>Mugatu's Silly Mode</li>
                   </ul>
                 </div>
                 <button onClick={this.props.addPiano} className='btn btn-warning'>Add Piano</button>
