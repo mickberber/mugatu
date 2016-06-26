@@ -20,12 +20,7 @@ export default class App extends Component {
 
   addPiano() {
     //dispatch new piano to redux store
-    store.dispatch(addPianoAction(<Piano img={this.state.mugatuApp.img} 
-                    pianoType={this.state.mugatuApp.type} 
-                    audio={this.state.mugatuApp.audio} 
-                    key={this.state.pianos.length}
-                    initProps={this.state.mugatuApp.initialPianoState}
-                    />)
+    store.dispatch(addPianoAction(<Piano store={store} key={this.state.pianos.length} />)
     );
     //set state again to rerender
     this.setState({pianos: store.getState().pianos})

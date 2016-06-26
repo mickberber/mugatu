@@ -18,17 +18,15 @@ export const PianoState = {
     img: './../assets/pknecktie5.png',
     type: 'NECKTIE',
     audio: audio.necktieAudio,
-    initialPianoState: {
-        sequence: [],
-        text: '',
-        'C': 'white',
-        'D': 'white',
-        'E': 'white',
-        'F': 'white',
-        'G': 'white',
-        'A': 'white',
-        'B': 'white'
-    }
+    sequence: [],
+    text: '',
+    'C': 'white',
+    'D': 'white',
+    'E': 'white',
+    'F': 'white',
+    'G': 'white',
+    'A': 'white',
+    'B': 'white'
 }
 
 
@@ -48,7 +46,7 @@ export function removePianoAction() {
 
 export function chooseTypeAction(newType, newImg, newAudio) {
     return {
-        type: 'CHOOSE_TYPE',
+        type: CHOOSE_TYPE,
         mode: newType,
         img: newImg,
         audio: newAudio

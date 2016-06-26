@@ -11,9 +11,8 @@ export default class Piano extends Component {
         super(props);
         this.props = props;
         this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
-        this.audio = props.audio;
 
-        this.state = props.initProps;
+        this.state = this.props.store.getState().mugatuApp;
 
         this.handleSequence = this.handleSequence.bind(this);
         this.handleChangeText = this.handleChangeText.bind(this);
@@ -46,7 +45,7 @@ export default class Piano extends Component {
         function createVisibleSync() {
             // runs subsequent calls, returns out of recursion if index has increased past last index in sequence
             this.colorChangeCycle(userInput[index].toUpperCase());
-            let mp3 = './../assets/sounds/' + '/' + this.props.pianoType + '/' + userInput[index].toUpperCase() + '.wav';
+            let mp3 = './../assets/sounds/' + '/' + this.state.type + '/' + userInput[index].toUpperCase() + '.wav';
             this.playAudio(mp3);
             index++;
             if(index >= userInput.length) {
@@ -57,7 +56,7 @@ export default class Piano extends Component {
         }
         //run call on first item in sequence
         this.colorChangeCycle(userInput[index].toUpperCase());
-        let mp3 = './../assets/sounds/' + '/' + this.props.pianoType + '/' + userInput[index].toUpperCase() + '.wav';
+        let mp3 = './../assets/sounds/' + '/' + this.state.type + '/' + userInput[index].toUpperCase() + '.wav';
         this.playAudio(mp3);
         index++;
         //delays subsequent calls
@@ -102,20 +101,20 @@ export default class Piano extends Component {
                              colorChangeCycle={this.colorChangeCycle} 
                              BGC={this.state[letter]} 
                              addToSequence={this.addToSequence} 
-                             letter={letter} key={i} audio={this.audio[i]}
+                             letter={letter} key={i} audio={this.state.audio[i]}
                              /> 
                             });
             
         return (
             <div>
-                <div>{this.props.pianoType}</div>
+                <div>{this.state.pianoType}</div>
                 <div className='piano'>
                     <div className='white'>
                         {whiteKeys}
                     </div>
                     <BlackKeys />
                     <div>
-                        <img src={this.props.img} style={{height: '400px', width: '750px', float: 'right'}}/>
+                        <img src={this.state.img} style={{height: '400px', width: '750px', float: 'right'}}/>
                     </div>
                     <br />
                 </div>
