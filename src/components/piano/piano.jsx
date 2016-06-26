@@ -30,6 +30,7 @@ export default class Piano extends Component {
         this.colorChangeCycle = this.colorChangeCycle.bind(this);
         this.addToSequence = this.addToSequence.bind(this);
         this.playAudio = this.playAudio.bind(this);
+        this.colorChange = this.colorChange.bind(this);
     }
 
     /* USER INPUT WORKERS */
