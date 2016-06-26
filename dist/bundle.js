@@ -26199,7 +26199,11 @@
 	      //dispatch new piano to redux store
 	      _index2.default.dispatch({
 	        type: 'ADD_PIANO',
-	        piano: _react2.default.createElement(_piano2.default, { img: this.state.img, pianoType: this.state.type, audio: this.state.audio, key: this.state.pianos.length })
+	        piano: _react2.default.createElement(_piano2.default, { img: this.state.img,
+	          pianoType: this.state.type,
+	          audio: this.state.audio,
+	          key: this.state.pianos.length
+	        })
 	      });
 	      //set state again to rerender
 	      this.setState({ pianos: _index2.default.getState().pianos });
@@ -26234,7 +26238,11 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_nav2.default, { addPiano: this.addPiano, removePiano: this.removePiano, chooseType: this.chooseType, currentType: this.state.type }),
+	        _react2.default.createElement(_nav2.default, { addPiano: this.addPiano,
+	          removePiano: this.removePiano,
+	          chooseType: this.chooseType,
+	          currentType: this.state.type
+	        }),
 	        _react2.default.createElement(
 	          'div',
 	          null,
@@ -26617,7 +26625,12 @@
 	            var _this3 = this;
 
 	            var whiteKeys = this.keys.map(function (letter, i) {
-	                return _react2.default.createElement(_whiteKey2.default, { playAudio: _this3.playAudio, colorChangeCycle: _this3.colorChangeCycle, BGC: _this3.state[letter], addToSequence: _this3.addToSequence, letter: letter, key: i, audio: _this3.audio[i] });
+	                return _react2.default.createElement(_whiteKey2.default, { playAudio: _this3.playAudio,
+	                    colorChangeCycle: _this3.colorChangeCycle,
+	                    BGC: _this3.state[letter],
+	                    addToSequence: _this3.addToSequence,
+	                    letter: letter, key: i, audio: _this3.audio[i]
+	                });
 	            });
 
 	            return _react2.default.createElement(
