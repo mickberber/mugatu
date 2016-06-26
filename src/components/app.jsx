@@ -21,7 +21,11 @@ export default class App extends Component {
     //dispatch new piano to redux store
     store.dispatch({
       type: 'ADD_PIANO',
-      piano: <Piano img={this.state.img} pianoType={this.state.type} audio={this.state.audio} key={this.state.pianos.length}/>
+      piano: <Piano img={this.state.img} 
+                    pianoType={this.state.type} 
+                    audio={this.state.audio} 
+                    key={this.state.pianos.length}
+                    />
     });
     //set state again to rerender
     this.setState({pianos: store.getState().pianos})
@@ -52,7 +56,11 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Nav addPiano={this.addPiano} removePiano={this.removePiano} chooseType={this.chooseType} currentType={this.state.type}/>
+        <Nav addPiano={this.addPiano} 
+             removePiano={this.removePiano}  
+             chooseType={this.chooseType} 
+             currentType={this.state.type}
+             />
         <div>{store.getState().pianos}</div>
       </div>
     );
