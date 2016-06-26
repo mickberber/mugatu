@@ -25336,7 +25336,6 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 
 	    _this.state = _index2.default.getState();
-	    console.log(_this.state);
 
 	    _this.addPiano = _this.addPiano.bind(_this);
 	    _this.removePiano = _this.removePiano.bind(_this);
@@ -25351,7 +25350,8 @@
 	      _index2.default.dispatch((0, _index3.addPianoAction)(_react2.default.createElement(_piano2.default, { img: this.state.mugatuApp.img,
 	        pianoType: this.state.mugatuApp.type,
 	        audio: this.state.mugatuApp.audio,
-	        key: this.state.pianos.length
+	        key: this.state.pianos.length,
+	        initProps: this.state.mugatuApp.initialPianoState
 	      })));
 	      //set state again to rerender
 	      this.setState({ pianos: _index2.default.getState().pianos });
@@ -25664,17 +25664,7 @@
 	        _this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 	        _this.audio = props.audio;
 
-	        _this.state = {
-	            sequence: [],
-	            text: '',
-	            'C': 'white',
-	            'D': 'white',
-	            'E': 'white',
-	            'F': 'white',
-	            'G': 'white',
-	            'A': 'white',
-	            'B': 'white'
-	        };
+	        _this.state = props.initProps;
 
 	        _this.handleSequence = _this.handleSequence.bind(_this);
 	        _this.handleChangeText = _this.handleChangeText.bind(_this);
@@ -26046,7 +26036,7 @@
 	}
 
 	function mugatuApp() {
-	    var state = arguments.length <= 0 || arguments[0] === undefined ? _index.PianoFilters : arguments[0];
+	    var state = arguments.length <= 0 || arguments[0] === undefined ? _index.PianoState : arguments[0];
 	    var action = arguments[1];
 
 	    switch (action.type) {
@@ -26919,9 +26909,12 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.PianoFilters = exports.CHOOSE_TYPE = exports.REMOVE_PIANO = exports.ADD_PIANO = undefined;
+	exports.PianoState = exports.CHANGE_TEXT = exports.ADD_TO_SEQUENCE = exports.CHANGE_COLOR = exports.CHOOSE_TYPE = exports.REMOVE_PIANO = exports.ADD_PIANO = undefined;
 	exports.addPianoAction = addPianoAction;
 	exports.removePianoAction = removePianoAction;
+	exports.changeColor = changeColor;
+	exports.changeText = changeText;
+	exports.addToSequence = addToSequence;
 
 	var _audio = __webpack_require__(225);
 
@@ -26931,16 +26924,35 @@
 
 	// ACTION TYPES
 
+	// App State
 	var ADD_PIANO = exports.ADD_PIANO = 'ADD_PIANO';
 	var REMOVE_PIANO = exports.REMOVE_PIANO = 'REMOVE_PIANO';
 	var CHOOSE_TYPE = exports.CHOOSE_TYPE = 'CHOOSE_TYPE';
 
-	var PianoFilters = exports.PianoFilters = {
+	//Individual Piano States
+	var CHANGE_COLOR = exports.CHANGE_COLOR = 'CHANGE_COLOR';
+	var ADD_TO_SEQUENCE = exports.ADD_TO_SEQUENCE = 'ADD_TO_SEQUENCE';
+	var CHANGE_TEXT = exports.CHANGE_TEXT = 'CHANGE_TEXT';
+
+	// App default state for piano props
+	var PianoState = exports.PianoState = {
 	    img: './../assets/pknecktie5.png',
 	    type: 'NECKTIE',
-	    audio: _audio2.default.necktieAudio
+	    audio: _audio2.default.necktieAudio,
+	    initialPianoState: {
+	        sequence: [],
+	        text: '',
+	        'C': 'white',
+	        'D': 'white',
+	        'E': 'white',
+	        'F': 'white',
+	        'G': 'white',
+	        'A': 'white',
+	        'B': 'white'
+	    }
 	};
 
+	//Action Creators
 	function addPianoAction(piano) {
 	    return {
 	        type: ADD_PIANO,
@@ -26951,6 +26963,30 @@
 	function removePianoAction() {
 	    return {
 	        type: REMOVE_PIANO
+	    };
+	}
+
+	function changeColor(letter, index) {
+	    return {
+	        type: CHANGE_COLOR,
+	        letter: letter,
+	        index: index
+	    };
+	}
+
+	function changeText(text, index) {
+	    return {
+	        type: CHANGE_TEXT,
+	        text: text,
+	        index: index
+	    };
+	}
+
+	function addToSequence(letter, index) {
+	    return {
+	        type: ADD_TO_SEQUENCE,
+	        letter: letter,
+	        index: index
 	    };
 	}
 
