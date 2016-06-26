@@ -25347,12 +25347,7 @@
 	    key: 'addPiano',
 	    value: function addPiano() {
 	      //dispatch new piano to redux store
-	      _index2.default.dispatch((0, _index3.addPianoAction)(_react2.default.createElement(_piano2.default, { img: this.state.mugatuApp.img,
-	        pianoType: this.state.mugatuApp.type,
-	        audio: this.state.mugatuApp.audio,
-	        key: this.state.pianos.length,
-	        initProps: this.state.mugatuApp.initialPianoState
-	      })));
+	      _index2.default.dispatch((0, _index3.addPianoAction)(_react2.default.createElement(_piano2.default, { store: _index2.default, index: this.state.pianos.length, key: this.state.pianos.length })));
 	      //set state again to rerender
 	      this.setState({ pianos: _index2.default.getState().pianos });
 	    }
@@ -25657,9 +25652,9 @@
 
 	        _this.props = props;
 	        _this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
-	        _this.audio = props.audio;
 
-	        _this.state = props.initProps;
+	        _this.state = _this.props.store.getState().mugatuApp;
+	        console.log(_this.props.store.getState());
 
 	        _this.handleSequence = _this.handleSequence.bind(_this);
 	        _this.handleChangeText = _this.handleChangeText.bind(_this);
@@ -25697,7 +25692,7 @@
 	            function createVisibleSync() {
 	                // runs subsequent calls, returns out of recursion if index has increased past last index in sequence
 	                this.colorChangeCycle(userInput[index].toUpperCase());
-	                var mp3 = './../assets/sounds/' + '/' + this.props.pianoType + '/' + userInput[index].toUpperCase() + '.wav';
+	                var mp3 = './../assets/sounds/' + '/' + this.state.type + '/' + userInput[index].toUpperCase() + '.wav';
 	                this.playAudio(mp3);
 	                index++;
 	                if (index >= userInput.length) {
@@ -25708,7 +25703,7 @@
 	            }
 	            //run call on first item in sequence
 	            this.colorChangeCycle(userInput[index].toUpperCase());
-	            var mp3 = './../assets/sounds/' + '/' + this.props.pianoType + '/' + userInput[index].toUpperCase() + '.wav';
+	            var mp3 = './../assets/sounds/' + '/' + this.state.type + '/' + userInput[index].toUpperCase() + '.wav';
 	            this.playAudio(mp3);
 	            index++;
 	            //delays subsequent calls
@@ -25761,7 +25756,7 @@
 	                    colorChangeCycle: _this3.colorChangeCycle,
 	                    BGC: _this3.state[letter],
 	                    addToSequence: _this3.addToSequence,
-	                    letter: letter, key: i, audio: _this3.audio[i]
+	                    letter: letter, key: i, audio: _this3.state.audio[i]
 	                });
 	            });
 
@@ -25771,7 +25766,7 @@
 	                _react2.default.createElement(
 	                    'div',
 	                    null,
-	                    this.props.pianoType
+	                    this.state.pianoType
 	                ),
 	                _react2.default.createElement(
 	                    'div',
@@ -25785,7 +25780,7 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        null,
-	                        _react2.default.createElement('img', { src: this.props.img, style: { height: '400px', width: '750px', float: 'right' } })
+	                        _react2.default.createElement('img', { src: this.state.img, style: { height: '400px', width: '750px', float: 'right' } })
 	                    ),
 	                    _react2.default.createElement('br', null)
 	                ),
@@ -26935,17 +26930,15 @@
 	    img: './../assets/pknecktie5.png',
 	    type: 'NECKTIE',
 	    audio: _audio2.default.necktieAudio,
-	    initialPianoState: {
-	        sequence: [],
-	        text: '',
-	        'C': 'white',
-	        'D': 'white',
-	        'E': 'white',
-	        'F': 'white',
-	        'G': 'white',
-	        'A': 'white',
-	        'B': 'white'
-	    }
+	    sequence: [],
+	    text: '',
+	    'C': 'white',
+	    'D': 'white',
+	    'E': 'white',
+	    'F': 'white',
+	    'G': 'white',
+	    'A': 'white',
+	    'B': 'white'
 	};
 
 	//Action Creators
@@ -26964,7 +26957,7 @@
 
 	function chooseTypeAction(newType, newImg, newAudio) {
 	    return {
-	        type: 'CHOOSE_TYPE',
+	        type: CHOOSE_TYPE,
 	        mode: newType,
 	        img: newImg,
 	        audio: newAudio
