@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from 'redux';
-import { ADD_PIANO, REMOVE_PIANO, CHOOSE_TYPE, PianoFilters } from './../actions/index';
+import { ADD_PIANO, REMOVE_PIANO, CHOOSE_TYPE, CHANGE_COLOR, ADD_TO_SEQUENCE, CHANGE_TEXT, PianoState } from './../actions/index';
 
 function pianos(state = [], action) {
     switch(action.type) {
@@ -15,7 +15,7 @@ function pianos(state = [], action) {
     }
 }
 
-function mugatuApp(state = PianoFilters, action) {
+function mugatuApp(state = PianoState, action) {
     switch(action.type) {
         case CHOOSE_TYPE:
             return Object.assign({}, state, {

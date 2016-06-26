@@ -12,7 +12,6 @@ export default class App extends Component {
     super(props)
 
     this.state = store.getState();
-    console.log(this.state); 
 
     this.addPiano = this.addPiano.bind(this);
     this.removePiano = this.removePiano.bind(this);
@@ -25,6 +24,7 @@ export default class App extends Component {
                     pianoType={this.state.mugatuApp.type} 
                     audio={this.state.mugatuApp.audio} 
                     key={this.state.pianos.length}
+                    initProps={this.state.mugatuApp.initialPianoState}
                     />)
     );
     //set state again to rerender

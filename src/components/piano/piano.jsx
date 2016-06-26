@@ -13,17 +13,7 @@ export default class Piano extends Component {
         this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
         this.audio = props.audio;
 
-        this.state = {
-            sequence: [],
-            text: '',
-            'C': 'white',
-            'D': 'white',
-            'E': 'white',
-            'F': 'white',
-            'G': 'white',
-            'A': 'white',
-            'B': 'white'
-        };
+        this.state = props.initProps;
 
         this.handleSequence = this.handleSequence.bind(this);
         this.handleChangeText = this.handleChangeText.bind(this);
