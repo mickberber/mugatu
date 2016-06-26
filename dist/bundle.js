@@ -25347,7 +25347,7 @@
 	    key: 'addPiano',
 	    value: function addPiano() {
 	      //dispatch new piano to redux store
-	      _index2.default.dispatch((0, _index3.addPianoAction)(_react2.default.createElement(_piano2.default, { store: _index2.default, key: this.state.pianos.length })));
+	      _index2.default.dispatch((0, _index3.addPianoAction)(_react2.default.createElement(_piano2.default, { store: _index2.default, index: this.state.pianos.length, key: this.state.pianos.length })));
 	      //set state again to rerender
 	      this.setState({ pianos: _index2.default.getState().pianos });
 	    }
@@ -25654,6 +25654,7 @@
 	        _this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
 	        _this.state = _this.props.store.getState().mugatuApp;
+	        console.log(_this.props.store.getState());
 
 	        _this.handleSequence = _this.handleSequence.bind(_this);
 	        _this.handleChangeText = _this.handleChangeText.bind(_this);

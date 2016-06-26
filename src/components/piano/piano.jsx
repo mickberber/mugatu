@@ -13,6 +13,7 @@ export default class Piano extends Component {
         this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
         this.state = this.props.store.getState().mugatuApp;
+        console.log(this.props.store.getState())
 
         this.handleSequence = this.handleSequence.bind(this);
         this.handleChangeText = this.handleChangeText.bind(this);

@@ -20,7 +20,8 @@ export default class App extends Component {
 
   addPiano() {
     //dispatch new piano to redux store
-    store.dispatch(addPianoAction(<Piano store={store} key={this.state.pianos.length} />)
+    store.dispatch(
+      addPianoAction(<Piano store={store} index={this.state.pianos.length} key={this.state.pianos.length} />)
     );
     //set state again to rerender
     this.setState({pianos: store.getState().pianos})
