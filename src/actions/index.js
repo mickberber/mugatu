@@ -12,22 +12,15 @@ export const PianoFilters = {
     audio: audio.necktieAudio
 }
 
-export function addPiano() {
+export function addPianoAction(piano) {
     return {
-        type: ADD_PIANO
+        type: ADD_PIANO,
+        piano: piano
     }
 }
 
-export function removePiano() {
+export function removePianoAction() {
     return {
         type: REMOVE_PIANO
-    }
-}
-
-export function setPianoFilter(index, filters) {
-    return {
-        type: CHOOSE_TYPE,
-        index,
-        filters
     }
 }

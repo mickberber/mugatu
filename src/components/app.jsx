@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 import Nav from './nav/nav';
 import Piano from './piano/piano';
 
-/* Renders each Piano within the application */
 import store from './../reducers/index';
+import { addPianoAction, removePianoAction } from './../actions/index';
+/* Renders each Piano within the application */
 
 export default class App extends Component {
   constructor(props) {
@@ -20,14 +21,12 @@ export default class App extends Component {
 
   addPiano() {
     //dispatch new piano to redux store
-    store.dispatch({
-      type: 'ADD_PIANO',
-      piano: <Piano img={this.state.mugatuApp.img} 
+    store.dispatch(addPianoAction(<Piano img={this.state.mugatuApp.img} 
                     pianoType={this.state.mugatuApp.type} 
                     audio={this.state.mugatuApp.audio} 
                     key={this.state.pianos.length}
-                    />
-    });
+                    />)
+    );
     //set state again to rerender
     this.setState({pianos: store.getState().pianos})
   }
@@ -37,9 +36,7 @@ export default class App extends Component {
       alert('No pianos to remove!');
     }
     //dispatch to redux store to remove piano 
-    store.dispatch({
-      type: 'REMOVE_PIANO'
-    });
+    store.dispatch(removePianoAction());
     //set state again to rerender
     this.setState({pianos: store.getState().pianos})
   }

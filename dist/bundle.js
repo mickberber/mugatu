@@ -25315,6 +25315,8 @@
 
 	var _index2 = _interopRequireDefault(_index);
 
+	var _index3 = __webpack_require__(244);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -25324,7 +25326,6 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	/* Renders each Piano within the application */
-
 
 	var App = function (_Component) {
 	  _inherits(App, _Component);
@@ -25347,14 +25348,11 @@
 	    key: 'addPiano',
 	    value: function addPiano() {
 	      //dispatch new piano to redux store
-	      _index2.default.dispatch({
-	        type: 'ADD_PIANO',
-	        piano: _react2.default.createElement(_piano2.default, { img: this.state.mugatuApp.img,
-	          pianoType: this.state.mugatuApp.type,
-	          audio: this.state.mugatuApp.audio,
-	          key: this.state.pianos.length
-	        })
-	      });
+	      _index2.default.dispatch((0, _index3.addPianoAction)(_react2.default.createElement(_piano2.default, { img: this.state.mugatuApp.img,
+	        pianoType: this.state.mugatuApp.type,
+	        audio: this.state.mugatuApp.audio,
+	        key: this.state.pianos.length
+	      })));
 	      //set state again to rerender
 	      this.setState({ pianos: _index2.default.getState().pianos });
 	    }
@@ -25365,9 +25363,7 @@
 	        alert('No pianos to remove!');
 	      }
 	      //dispatch to redux store to remove piano
-	      _index2.default.dispatch({
-	        type: 'REMOVE_PIANO'
-	      });
+	      _index2.default.dispatch((0, _index3.removePianoAction)());
 	      //set state again to rerender
 	      this.setState({ pianos: _index2.default.getState().pianos });
 	    }
@@ -26033,44 +26029,7 @@
 
 	var _index = __webpack_require__(244);
 
-	var _audio = __webpack_require__(225);
-
-	var _audio2 = _interopRequireDefault(_audio);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-	// const initialState = {
-	//     pianos: [],
-	//     img: './../assets/pknecktie5.png',
-	//     type: 'NECKTIE',
-	//     audio: audio.necktieAudio
-	// }
-	//
-	// function AppReducer(state = initialState, action) {
-	//     switch(action.type) {
-	//         case ADD_PIANO:
-	//             return Object.assign({}, state, {
-	//                 pianos: [
-	//                     ...state.pianos,
-	//                     action.piano
-	//                 ]
-	//             })
-	//         case REMOVE_PIANO:
-	//             return Object.assign({}, state, {
-	//                 pianos: state.pianos.slice(0, (state.pianos.length - 1))
-	//             })
-	//         case CHOOSE_TYPE:
-	//             return Object.assign({}, state, {
-	//                 img: action.img,
-	//                 type: action.mode,
-	//                 audio: action.audio
-	//             })
-	//         default:
-	//             return state
-	//     }
-	// }
 
 	function pianos() {
 	    var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
@@ -26080,7 +26039,7 @@
 	        case _index.ADD_PIANO:
 	            return [].concat(_toConsumableArray(state), [action.piano]);
 	        case _index.REMOVE_PIANO:
-	            return state.pianos.slice(0, state.pianos.length - 1);
+	            return state.slice(0, state.length - 1);
 	        default:
 	            return state;
 	    }
@@ -26961,9 +26920,8 @@
 	    value: true
 	});
 	exports.PianoFilters = exports.CHOOSE_TYPE = exports.REMOVE_PIANO = exports.ADD_PIANO = undefined;
-	exports.addPiano = addPiano;
-	exports.removePiano = removePiano;
-	exports.setPianoFilter = setPianoFilter;
+	exports.addPianoAction = addPianoAction;
+	exports.removePianoAction = removePianoAction;
 
 	var _audio = __webpack_require__(225);
 
@@ -26983,23 +26941,16 @@
 	    audio: _audio2.default.necktieAudio
 	};
 
-	function addPiano() {
+	function addPianoAction(piano) {
 	    return {
-	        type: ADD_PIANO
+	        type: ADD_PIANO,
+	        piano: piano
 	    };
 	}
 
-	function removePiano() {
+	function removePianoAction() {
 	    return {
 	        type: REMOVE_PIANO
-	    };
-	}
-
-	function setPianoFilter(index, filters) {
-	    return {
-	        type: CHOOSE_TYPE,
-	        index: index,
-	        filters: filters
 	    };
 	}
 
