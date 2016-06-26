@@ -46,6 +46,16 @@ export function removePianoAction() {
     }
 }
 
+export function chooseTypeAction(newType, newImg, newAudio) {
+    return {
+        type: 'CHOOSE_TYPE',
+        mode: newType,
+        img: newImg,
+        audio: newAudio
+    }
+}
+
+
 export function changeColor(letter, index) {
     return {
         type: CHANGE_COLOR,

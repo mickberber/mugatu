@@ -25370,12 +25370,7 @@
 	  }, {
 	    key: 'chooseType',
 	    value: function chooseType(newType, newImg, newAudio) {
-	      _index2.default.dispatch({
-	        type: 'CHOOSE_TYPE',
-	        mode: newType,
-	        img: newImg,
-	        audio: newAudio
-	      });
+	      _index2.default.dispatch((0, _index3.chooseTypeAction)(newType, newImg, newAudio));
 	      this.setState(_index2.default.getState());
 	    }
 	  }, {
@@ -26912,6 +26907,7 @@
 	exports.PianoState = exports.CHANGE_TEXT = exports.ADD_TO_SEQUENCE = exports.CHANGE_COLOR = exports.CHOOSE_TYPE = exports.REMOVE_PIANO = exports.ADD_PIANO = undefined;
 	exports.addPianoAction = addPianoAction;
 	exports.removePianoAction = removePianoAction;
+	exports.chooseTypeAction = chooseTypeAction;
 	exports.changeColor = changeColor;
 	exports.changeText = changeText;
 	exports.addToSequence = addToSequence;
@@ -26963,6 +26959,15 @@
 	function removePianoAction() {
 	    return {
 	        type: REMOVE_PIANO
+	    };
+	}
+
+	function chooseTypeAction(newType, newImg, newAudio) {
+	    return {
+	        type: 'CHOOSE_TYPE',
+	        mode: newType,
+	        img: newImg,
+	        audio: newAudio
 	    };
 	}
 
