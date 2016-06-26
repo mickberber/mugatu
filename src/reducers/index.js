@@ -9,7 +9,7 @@ const initialState = {
     audio: audio.necktieAudio
 }
 
-const AppReducer = (state = initialState, action) => {
+function AppReducer(state = initialState, action) {
     switch(action.type) {
         case 'ADD_PIANO':
             return Object.assign({}, state, {
