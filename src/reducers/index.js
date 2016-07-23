@@ -1,6 +1,8 @@
 import { createStore, combineReducers } from 'redux';
 import { ADD_PIANO, REMOVE_PIANO, CHOOSE_TYPE, CHANGE_COLOR, ADD_TO_SEQUENCE, CHANGE_TEXT, PianoState } from './../actions/index';
 
+let newPianoId = 0;
+
 function pianos(state = [], action) {
     switch(action.type) {
         case ADD_PIANO:
@@ -21,7 +23,8 @@ function mugatuApp(state = PianoState, action) {
             return Object.assign({}, state, {
                 img: action.img,
                 type: action.mode,
-                audio: action.audio
+                audio: action.audio,
+                id: newPianoId++
             })
         default:
             return state

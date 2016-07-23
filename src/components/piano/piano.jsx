@@ -10,10 +10,10 @@ export default class Piano extends Component {
     constructor(props){
         super(props);
         this.props = props;
+        this.index = this.props.index;
         this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
         this.state = this.props.store.getState().mugatuApp;
-        console.log(this.props.store.getState())
 
         this.handleSequence = this.handleSequence.bind(this);
         this.handleChangeText = this.handleChangeText.bind(this);
@@ -42,11 +42,13 @@ export default class Piano extends Component {
         let userInput = this.state.text.split(',');
         //use index as flag for recursion
         let index = 0;
+        let currentLetter = userInput[index].toUpperCase();
 
         function createVisibleSync() {
             // runs subsequent calls, returns out of recursion if index has increased past last index in sequence
-            this.colorChangeCycle(userInput[index].toUpperCase());
-            let mp3 = './../assets/sounds/' + '/' + this.state.type + '/' + userInput[index].toUpperCase() + '.wav';
+            let currentLetter = userInput[index].toUpperCase();
+            this.colorChangeCycle(currentLetter);
+            let mp3 = './../assets/sounds/' + '/' + this.state.type + '/' + currentLetter + '.wav';
             this.playAudio(mp3);
             index++;
             if(index >= userInput.length) {
@@ -56,8 +58,8 @@ export default class Piano extends Component {
             }
         }
         //run call on first item in sequence
-        this.colorChangeCycle(userInput[index].toUpperCase());
-        let mp3 = './../assets/sounds/' + '/' + this.state.type + '/' + userInput[index].toUpperCase() + '.wav';
+        this.colorChangeCycle(currentLetter);
+        let mp3 = './../assets/sounds/' + '/' + this.state.type + '/' + currentLetter + '.wav';
         this.playAudio(mp3);
         index++;
         //delays subsequent calls

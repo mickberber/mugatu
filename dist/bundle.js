@@ -25347,7 +25347,7 @@
 	    key: 'addPiano',
 	    value: function addPiano() {
 	      //dispatch new piano to redux store
-	      _index2.default.dispatch((0, _index3.addPianoAction)(_react2.default.createElement(_piano2.default, { store: _index2.default, index: this.state.pianos.length, key: this.state.pianos.length })));
+	      _index2.default.dispatch((0, _index3.addPianoAction)(_react2.default.createElement(_piano2.default, { store: _index2.default, ref: this.state.pianos.length, key: this.state.pianos.length })));
 	      //set state again to rerender
 	      this.setState({ pianos: _index2.default.getState().pianos });
 	    }
@@ -25651,10 +25651,10 @@
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Piano).call(this, props));
 
 	        _this.props = props;
+	        _this.index = _this.props.index;
 	        _this.keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
 	        _this.state = _this.props.store.getState().mugatuApp;
-	        console.log(_this.props.store.getState());
 
 	        _this.handleSequence = _this.handleSequence.bind(_this);
 	        _this.handleChangeText = _this.handleChangeText.bind(_this);
@@ -25688,11 +25688,13 @@
 	            var userInput = this.state.text.split(',');
 	            //use index as flag for recursion
 	            var index = 0;
+	            var currentLetter = userInput[index].toUpperCase();
 
 	            function createVisibleSync() {
 	                // runs subsequent calls, returns out of recursion if index has increased past last index in sequence
-	                this.colorChangeCycle(userInput[index].toUpperCase());
-	                var mp3 = './../assets/sounds/' + '/' + this.state.type + '/' + userInput[index].toUpperCase() + '.wav';
+	                var currentLetter = userInput[index].toUpperCase();
+	                this.colorChangeCycle(currentLetter);
+	                var mp3 = './../assets/sounds/' + '/' + this.state.type + '/' + currentLetter + '.wav';
 	                this.playAudio(mp3);
 	                index++;
 	                if (index >= userInput.length) {
@@ -25702,8 +25704,8 @@
 	                }
 	            }
 	            //run call on first item in sequence
-	            this.colorChangeCycle(userInput[index].toUpperCase());
-	            var mp3 = './../assets/sounds/' + '/' + this.state.type + '/' + userInput[index].toUpperCase() + '.wav';
+	            this.colorChangeCycle(currentLetter);
+	            var mp3 = './../assets/sounds/' + '/' + this.state.type + '/' + currentLetter + '.wav';
 	            this.playAudio(mp3);
 	            index++;
 	            //delays subsequent calls
@@ -26011,6 +26013,7 @@
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
+	var newPianoId = 0;
 	function pianos() {
 	    var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
 	    var action = arguments[1];
@@ -26034,7 +26037,8 @@
 	            return Object.assign({}, state, {
 	                img: action.img,
 	                type: action.mode,
-	                audio: action.audio
+	                audio: action.audio,
+	                id: newPianoId++
 	            });
 	        default:
 	            return state;
